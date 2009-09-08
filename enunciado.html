@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>.: MC823 - Laboratório de Teleprocessamento e Redes :.</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+                <style type="text/css">@import url('estilo.css');</style>
+	</head>
+	
+	<body>
+
+	<br/>
+	<div id="conteudo1">
+		<div class="tituloC">Atividade 1</div>
+		<b>Passos:</b>
+		<ol>
+			<li>Analise os códigos dos programas a seguir e procure nas páginas de manual do Linux, a descrição
+			    das funções que não conhecer. Procure também nos códigos a natureza dos parâmetros que cada
+ 			    programa deve receber, se for o caso. Explique o funcionamento das
+		            funções inet_pton, htons e htonl.</li>
+			<li>Compile e execute os programas <b> <a href="cliente.c">cliente.c</a> </b> e
+			    <b> <a href="servidor.c">servidor.c</a> </b> em uma mesma máquina.</li>
+			<li>Execute os programas em máquinas diferentes (pode-se utilizar
+         ssh.students.ic.unicamp.br para executar o binário gerado pela
+         compilação do <code>cliente.c</code> e a sua estação para executar o binário gerado
+         pela compilação do <code>servidor.c</code>)</li>
+			<li>A função <code>bind</code> reportou algum erro? Em caso afirmativo, qual a sua causa? Se
+			    necessário, modifique os programas de forma que este erro seja
+             corrigido e informe quais modificações foram realizadas.</li>
+         <li>Com as modificações feitas, re-execute os programas em uma mesma
+             máquina e em máquinas diferentes. Quais as saídas dos programas?</li>
+         <li>Através de ferramentas existentes no sistema operacional, como
+             você comprova, durante a execução em máquinas diferentes, que os
+             códigos estão realizando uma comunicação via rede?</li>
+         <li>Adicione comentários ao código (use como referência os algoritmos
+             apresentados em sala de aula para comentar o código).</li>
+			<li>Modifique o programa <code>cliente.c</code> para que ele obtenha
+             os números do socket local (# IP, # porta local) através da função <code>getsockname()</code>. Modifique o programa
+			    <code>servidor.c</code> para que este obtenha os números do socket remoto do cliente (# IP remoto,
+			    # porta remota), utilizando a função <code>getpeername()</code>. Imprima esses valores na saída
+			    padrão.</li>
+         <li>Mantenha o binário do <code>servidor.c</code> executando em uma
+             máquina A e execute três vezes seguidas o binário do
+             <code>cliente.c</code> em uma máquina B. Observando a saída do comando
+             <code>netstat</code>, qual das duas máquinas (A ou B) ficam no estado
+             TIME_WAIT?  Explique porque a outra máquina não fica nesse
+             estado.</li>
+	 <li>O programa <code>telnet</code> pode ser usado no lugar do binário
+             do <code>client.c</code>? Por que? Caso o <code>telnet</code> possa ser usado,
+             copie a saída do servidor e da execução do <code>telnet</code>. Cite uma
+             modificação no <code>servidor.c</code> que impediria a utilização do
+             <code>telnet</code></li>
+		</ol>
+      <b>Material a ser entregue:</b>
+      <ol>
+         <li> 1 único arquivo .pdf contendo o relatório comprovando a execução
+         de todos os passos acima (Devem ser incluídas as saídas das execuções
+         dos programas, devem ser comentados os nomes/endereços das máquinas
+         utilizadas e devem ser respondidas as questões).</li>
+         <li> Os códigos <code>servidor.c</code> e <code>cliente.c</code>
+         modificados conforme solicitado nos passos acima e devidamente
+         comentados.</li>
+         <li> 1 único arquivo .pdf contendo os códigos do
+	 <code>servidor.c</code> e <code>cliente.c</code> (Podem ser utilizados
+         os programas a2ps e ps2pdf para gerar o arquivo -- <b>Leia a manpage do a2ps!!!
+         Por padrão a saída é enviada direto para a impressora!!!</b>).</li>
+      </ol>
+      <b>Obs.:</b> 50% da nota será dada pelo relatório e 50% pelos códigos.<br/>
+		O material deve ser enviado por e-mail com o cabeçalho <b>[MC823] Atividade 1 - </b> 
+		seguido pelo RA dos componentes. Endereço: <div class="email">batista (a) ic.unicamp.br
+	</div>
+	</div> 
+	
+	</body>
+</html>
