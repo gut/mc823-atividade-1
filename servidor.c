@@ -12,9 +12,18 @@
 #define LISTENQ 10
 #define MAXDATASIZE 100
 
+/* Obtem IP na forma decimal */
+#define GETIP(addr) \
+    ((unsigned char *)&addr)[0], \
+    ((unsigned char *)&addr)[1], \
+    ((unsigned char *)&addr)[2], \
+    ((unsigned char *)&addr)[3]
+
 int main (int argc, char **argv) {
    int    listenfd, connfd;
    struct sockaddr_in servaddr;
+   struct sockaddr_in clientaddr;
+   socklen_t len;
    char   buf[MAXDATASIZE];
    time_t ticks;
 
@@ -34,7 +43,7 @@ int main (int argc, char **argv) {
    /* Deixe o sistema descobrir nosso IP */
    servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
    /* Esta serah a porta na qual escutaremos */
-   servaddr.sin_port        = htons(13);
+   servaddr.sin_port        = htons(1025);
 
    /* bind: associa o socket pai com uma porta */
    if (bind(listenfd, (struct sockaddr *)&servaddr, sizeof(servaddr)) == -1) {
@@ -58,6 +67,11 @@ int main (int argc, char **argv) {
          perror("accept");
          exit(1);
       }
+      bzero(&clientaddr, sizeof(clientaddr));
+      len = sizeof(clientaddr);
+      getpeername(connfd, (struct sockaddr*)&clientaddr, &len);
+      fprintf(stdout, "Connection established with: %d.%d.%d.%d:%d\n",
+              GETIP(clientaddr.sin_addr.s_addr), ntohs(clientaddr.sin_port));
 
       ticks = time(NULL);
       snprintf(buf, sizeof(buf), "%.24s\r\n", ctime(&ticks));
