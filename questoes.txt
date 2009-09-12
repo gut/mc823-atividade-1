@@ -1,0 +1,20 @@
+
+Respostas das questões propostas:
+
+--------------------
+10. O programa telnet pode ser usado no lugar do binário do client.c? Por que? Caso o telnet possa ser usado, copie a saída do servidor e da execução do telnet. Cite uma modificação no servidor.c que impediria a utilização do telnet.
+
+Sim, o telnet pode ser usado. Isso ocorre porque o telnet funciona por meio de conexões TCP, e o servidor em questão é um servidor TCP. A seguir, a saída da conexão ao servidor usando telnet:
+
+$ telnet 127.0.0.1 1025
+Trying 127.0.0.1...
+Connected to 127.0.0.1.
+Escape character is '^]'.
+Fri Sep 11 23:08:55 2009
+Connection closed by foreign host.
+
+$ ./servidor
+Connection established with: 127.0.0.1:48361
+
+Visto que não há como o servidor saber qual tipo de aplicação se conecta nele -- pois o que ele faz é somente aceitar conexões TCP -- e que o programa telnet funciona por meio do protocolo TCP, a única forma de impedir que seja possível usar o telnet nesse caso é modificar o servidor para que ele use o protocolo UDP ao invés do TCP.
+--------------------
