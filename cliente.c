@@ -26,26 +26,32 @@ int main(int argc, char **argv) {
       exit(1);
    }
 
+   /* socket: cria o socket */
    if ( (sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
       perror("socket error");
       exit(1);
    }
 
+   /* Constroi o endereco de internet do servidor */
    bzero(&servaddr, sizeof(servaddr));
    servaddr.sin_family = AF_INET;
    servaddr.sin_port   = htons(13);
+   /* Converte string em uma struct de endereco de internet */
    if (inet_pton(AF_INET, argv[1], &servaddr.sin_addr) <= 0) {
       perror("inet_pton error");
       exit(1);
    }
 
+   /* connect: cria a conexao com o servidor */
    if (connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) < 0) {
       perror("connect error");
       exit(1);
    }
 
+   /* read: obtem resposta do servidor */
    while ( (n = read(sockfd, recvline, MAXLINE)) > 0) {
       recvline[n] = 0;
+      /* Imprime resposta obtida */
       if (fputs(recvline, stdout) == EOF) {
          perror("fputs error");
          exit(1);
