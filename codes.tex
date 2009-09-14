@@ -1,0 +1,39 @@
+\documentclass[pdftex, 10pt, a4paper]{article}
+
+\usepackage[pdftex]{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{color}
+\usepackage{listings}
+
+\lstset{ %
+    language=C,
+    basicstyle=\footnotesize,
+    numbers=left,
+    numberstyle=\footnotesize,
+    stepnumber=5,
+    numbersep=5pt,
+    backgroundcolor=\color{white},
+    showspaces=false,
+    showstringspaces=false,
+    frame=single,
+    tabsize=4,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    escapeinside={\%*}{*)}
+}
+
+\title{Códigos-fonte da atividade 1}
+\date{14 de setembro de 2009}
+
+\begin{document}
+\maketitle
+
+\lstinputlisting[label=servidor, caption=Código comentado do
+    servidor]{servidor.c}
+
+\lstinputlisting[label=cliente, caption=Código comentado do
+    cliente]{cliente.c}
+
+\end{document}

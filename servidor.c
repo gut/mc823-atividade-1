@@ -75,7 +75,7 @@ int main (int argc, char **argv) {
 
       ticks = time(NULL);
       snprintf(buf, sizeof(buf), "%.24s\r\n", ctime(&ticks));
-      /* write: devolve a hora para o cliente */
+      /* write: devolve a data para o cliente */
       write(connfd, buf, strlen(buf));
 
       /* close: fecha a conexao */
