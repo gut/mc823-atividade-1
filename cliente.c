@@ -27,10 +27,10 @@ int main(int argc, char **argv) {
    struct sockaddr_in local;
    socklen_t len;
 
-   if (argc != 2) {
+   if (argc != 3) {
       strcpy(error,"uso: ");
       strcat(error,argv[0]);
-      strcat(error," <IPaddress>");
+      strcat(error," <IPaddress> <Port>");
       perror(error);
       exit(1);
    }
@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
    /* Constroi o endereco de internet do servidor */
    bzero(&servaddr, sizeof(servaddr));
    servaddr.sin_family = AF_INET;
-   servaddr.sin_port   = htons(1025);
+   servaddr.sin_port   = htons(atoi(argv[2]));
    /* Converte string em uma struct de endereco de internet */
    if (inet_pton(AF_INET, argv[1], &servaddr.sin_addr) <= 0) {
       perror("inet_pton error");
