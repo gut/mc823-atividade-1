@@ -13,6 +13,7 @@
 #define LISTENQ 10
 #define MAXDATASIZE 100
 #define SOCKET_CLOSE_DELAY 15
+#define MAXLINE 4096
 
 /* Obtem IP na forma decimal */
 #define GETIP(addr) \
@@ -25,9 +26,18 @@ int main (int argc, char **argv) {
    int    listenfd, connfd;
    struct sockaddr_in servaddr;
    struct sockaddr_in clientaddr;
+   char   error[MAXLINE + 1];
    socklen_t len;
    char   buf[MAXDATASIZE];
    time_t ticks;
+
+   if (argc != 2) {
+      strcpy(error,"uso: ");
+      strcat(error,argv[0]);
+      strcat(error," <Port>");
+      perror(error);
+      exit(1);
+   }
 
    /* socket: cria socket pai.
     * "listenfd" serah o file descriptor usado
@@ -45,7 +55,7 @@ int main (int argc, char **argv) {
    /* Deixe o sistema descobrir nosso IP */
    servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
    /* Esta serah a porta na qual escutaremos */
-   servaddr.sin_port        = htons(1025);
+   servaddr.sin_port        = htons(atoi(argv[1]));
 
    /* bind: associa o socket pai com uma porta */
    if (bind(listenfd, (struct sockaddr *)&servaddr, sizeof(servaddr)) == -1) {
