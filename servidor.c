@@ -8,9 +8,11 @@
 #include <sys/socket.h>
 #include <time.h>
 #include <unistd.h>
+#include <unistd.h>
 
 #define LISTENQ 10
 #define MAXDATASIZE 100
+#define SOCKET_CLOSE_DELAY 15
 
 /* Obtem IP na forma decimal */
 #define GETIP(addr) \
@@ -78,6 +80,7 @@ int main (int argc, char **argv) {
       /* write: devolve a hora para o cliente */
       write(connfd, buf, strlen(buf));
 
+	  sleep(SOCKET_CLOSE_DELAY);
       /* close: fecha a conexao */
       close(connfd);
    }
