@@ -21,16 +21,17 @@
 
 int main(int argc, char **argv) {
    int    sockfd, n;
+   char   sendline[MAXLINE + 1];
    char   recvline[MAXLINE + 1];
    char   error[MAXLINE + 1];
    struct sockaddr_in servaddr;
    struct sockaddr_in local;
    socklen_t len;
 
-   if (argc != 3) {
+   if (argc != 4) {
       strcpy(error,"uso: ");
       strcat(error,argv[0]);
-      strcat(error," <IPaddress> <Port>");
+      strcat(error," <IPaddress> <Port> <Command>");
       perror(error);
       exit(1);
    }
@@ -66,6 +67,13 @@ int main(int argc, char **argv) {
    fprintf(stdout, "Local address: %d.%d.%d.%d:%d\n",
            GETIP(local.sin_addr.s_addr), ntohs(local.sin_port));
 
+
+   /* write: envia o comando */
+   memcpy(sendline, argv[3], strlen(argv[3]));
+   if (!(write(sockfd, sendline, strlen(sendline)))) {
+         perror("socket write error");
+         exit(1);
+   }
 
    /* read: obtem resposta do servidor */
    while ( (n = read(sockfd, recvline, MAXLINE)) > 0) {
