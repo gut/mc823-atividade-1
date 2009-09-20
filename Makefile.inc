@@ -13,7 +13,7 @@ RANLIB := ranlib
 DEFS +=
 
 # Define compile-time flags
-CFLAGS += -Wall -Werror
+CFLAGS += -Wall -Werror -g
 CFLAGS += $(DEFS)
 
 # Define libraries to link into executable
