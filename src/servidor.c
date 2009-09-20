@@ -26,9 +26,10 @@ int main (int argc, char **argv) {
    int    listenfd, connfd;
    struct sockaddr_in servaddr;
    struct sockaddr_in clientaddr;
-   char   error[MAXLINE + 1];
    socklen_t len;
+   char   error[MAXLINE + 1];
    char   buf[MAXDATASIZE];
+   char   recvline[MAXLINE + 1];
    time_t ticks;
 
    if (argc != 2) {
@@ -75,22 +76,37 @@ int main (int argc, char **argv) {
     */
    for ( ; ; ) {
       /* accept: espera por um pedido de conexao */
-      if ((connfd = accept(listenfd, (struct sockaddr *) NULL, NULL)) == -1 ) {
+      len = sizeof(clientaddr);
+      if ((connfd = accept(listenfd, (struct sockaddr *) &clientaddr, &len)) == -1 ) {
          perror("accept");
          exit(1);
       }
-      bzero(&clientaddr, sizeof(clientaddr));
-      len = sizeof(clientaddr);
-      getpeername(connfd, (struct sockaddr*)&clientaddr, &len);
       fprintf(stdout, "Connection established with: %d.%d.%d.%d:%d\n",
               GETIP(clientaddr.sin_addr.s_addr), ntohs(clientaddr.sin_port));
+
+      /* read: obtem a mensagem do cliente */
+      fprintf(stdout, "Command to run:\n");
+
+      while (fgets(recvline, MAXLINE, (FILE*)connfd)) {
+         /* Imprime resposta obtida */
+         if (fputs(recvline, stdout) == EOF) {
+            perror("fputs error");
+            exit(1);
+         }
+         bzero(&recvline, strlen(recvline));
+      }
+ 
+      if (recvline != NULL) {
+         perror("read error");
+         exit(1);
+      }
 
       ticks = time(NULL);
       snprintf(buf, sizeof(buf), "%.24s\r\n", ctime(&ticks));
       /* write: devolve a data para o cliente */
       write(connfd, buf, strlen(buf));
 
-	  sleep(SOCKET_CLOSE_DELAY);
+      /* Apenas para o ex1: sleep(SOCKET_CLOSE_DELAY); */
       /* close: fecha a conexao */
       close(connfd);
    }
