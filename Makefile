@@ -15,7 +15,7 @@ TARGET_BINS = servidor cliente
 LIBS_servidor =
 LIBS_cliente =
 
-MODS_servidor = servidor
-MODS_cliente = cliente
+MODS_servidor = servidor wrapper
+MODS_cliente = cliente wrapper
 
 include $(shell pwd)/Makefile.inc
