@@ -33,7 +33,7 @@ main(int argc, char **argv)
         exit(EXIT_FAILURE);
     }
 
-    /* socket: cria socket pai.
+    /* Cria socket pai.
      * "listenfd" serah o file descriptor usado
      * para operar com o socket */
     listenfd = Socket(AF_INET, SOCK_STREAM, 0);
@@ -48,15 +48,15 @@ main(int argc, char **argv)
     /* Esta serah a porta na qual escutaremos */
     servaddr.sin_port        = htons(atoi(argv[1]));
 
-    /* bind: associa o socket pai com uma porta */
+    /* Associa o socket pai com uma porta */
     Bind(listenfd, &servaddr, sizeof(servaddr));
 
-    /* listen: deixa esse socket preparado to aceitar pedidos de conexao */
+    /* Deixa esse socket preparado para aceitar pedidos de conexao */
     Listen(listenfd, LISTENQ);
 
     /*
-     * main loop: espere por um pedido de conexao, devolva a hora,
-     * e feche a conexao
+     * main loop: espere por um pedido de conexao, devolva o comando
+     * enviado pelo cliente, execute o comando e feche a conexao
      */
     for ( ; ; ) {
         /* Espera por um pedido de conexao */
@@ -67,7 +67,6 @@ main(int argc, char **argv)
         Getnameinfo(&clientaddr, len, host, sizeof(host), hp, sizeof(hp));
         fprintf(stdout, "conexao estabelecida com %s:%s\n", host, hp);
 
-        /* Imprimir aqui informacoes do cliente? */
         pid = fork();
         if (pid == 0) {
             /* Filho para de escutar conexoes */
@@ -78,7 +77,7 @@ main(int argc, char **argv)
             close(connfd);
             exit(EXIT_SUCCESS);
         }
-        /* close: pai fecha a conexao */
+        /* Pai fecha a conexao */
         close(connfd);
     }
 
@@ -97,7 +96,7 @@ process_request(int connfd)
             break;
         /* Devolve o comando para o cliente */
         Write(connfd, buf);
-        /* executa o comando recebido */
+        /* Executa o comando recebido */
         System(buf);
     }
 }

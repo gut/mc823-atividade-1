@@ -53,7 +53,7 @@ main(int argc, char **argv)
         exit(EXIT_FAILURE);
     }
 
-    /* socket: cria o socket */
+    /* Cria o socket */
     sockfd = Socket(AF_INET, SOCK_STREAM, 0);
 
     /* Constroi o endereco de internet do servidor */
@@ -64,17 +64,16 @@ main(int argc, char **argv)
     /* Converte string em uma struct de endereco de internet */
     Inet_pton(AF_INET, argv[1], &servaddr.sin_addr);
 
-    /* connect: cria a conexao com o servidor */
+    /* Cria a conexao com o servidor */
     Connect(sockfd, &servaddr, sizeof(servaddr));
 
-    /* getsockname: obtem IP e porta do socket local */
+    /* Obtem IP e porta do socket local */
     len = sizeof(local);
     Getsockname(sockfd, &local, &len);
     fprintf(stdout, "Local address: %d.%d.%d.%d:%d\n",
             GETIP(local.sin_addr.s_addr), ntohs(local.sin_port));
 
     /* Obtem comando do usuario */
-    //bzero(&sendline, sizeof(sendline));
     while (1) {
         fputs("Digite comando: ", stdout);
         fgets(sendline, sizeof(sendline) - 1, stdin);
