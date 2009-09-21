@@ -93,7 +93,7 @@ process_request(int connfd)
     while (1) {
         bzero(buf, sizeof(buf));
         /* Le comando do cliente */
-        if (Read(connfd, buf, sizeof(buf)) < 0)
+        if (Read(connfd, buf, sizeof(buf)) == 0)
             break;
         /* Devolve o comando para o cliente */
         Write(connfd, buf);
