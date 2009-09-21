@@ -1,0 +1,53 @@
+
+Respostas das questões propostas:
+
+--------------------
+1. Descrição das funções:
+inet_pton - Converte um endereço AF_INET (ipv4) ou AF_INET6 (ipv6) para um 'struct in_addr'
+htons - Converte valores de 16bits (short) da ordem do host para a ordem da rede
+htonl - Converte valores de 32bits (long) da ordem do host para a ordem da rede
+
+--------------------
+4. Sim, o "servidor" retornou "bind: Permission denied". Isso ocorreu pois o bind tentou acessar uma porta reservada (< 1024 é liberada apenas para super-usuário). Consertei modificando a linha:
+   servaddr.sin_port        = htons(13);   
+para:
+   servaddr.sin_port        = htons(1025);   
+Assim o bind pode ser feito com sucesso.
+k
+--------------------
+5. Mesma máquina:
+ Servidor:
+ 	-- não houve nenhuma impressão na tela --
+ Cliente:
+ 	$> ./cliente 127.0.0.1
+	Sun Sep 13 10:06:46 2009
+Máquinas diferentes (xaveco como cliente):
+ Servidor:
+ 	-- não houve nenhuma impressão na tela --
+ Cliente:
+	$> ./cliente 201.82.79.146
+	Sun Sep 13 09:53:08 2009
+
+--------------------
+6. Utilizando o software Wireshark é possível notar os pacotes que trafegam na sua interface de rede. No meu caso de teste eu configurei-o para analisar a interface loopback (lo) e, com o servidor rodando, executei o cliente local para o IP 127.0.0.1, com isso eu obtive a seguinte saída no wireshark: [img 1]
+
+[incluir conteúdo do "ex6.txt"]
+
+--------------------
+10. O programa telnet pode ser usado no lugar do binário do client.c? Por que? Caso o telnet possa ser usado, copie a saída do servidor e da execução do telnet. Cite uma modificação no servidor.c que impediria a utilização do telnet.
+
+Sim, o telnet pode ser usado. Isso ocorre porque o telnet funciona por meio de conexões TCP, e o servidor em questão é um servidor TCP. A seguir, a saída da conexão ao servidor usando telnet:
+
+$ telnet 127.0.0.1 1025
+Trying 127.0.0.1...
+Connected to 127.0.0.1.
+Escape character is '^]'.
+Fri Sep 11 23:08:55 2009
+Connection closed by foreign host.
+
+$ ./servidor
+Connection established with: 127.0.0.1:48361
+
+Visto que não há como o servidor saber qual tipo de aplicação se conecta nele -- pois o que ele faz é somente aceitar conexões TCP -- e que o programa telnet funciona por meio do protocolo TCP, a única forma de impedir que seja possível usar o telnet nesse caso é modificar o servidor para que ele use o protocolo UDP ao invés do TCP.
+
+--------------------
