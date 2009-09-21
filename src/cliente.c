@@ -10,19 +10,26 @@
 int
 received_quit_cmd(const char *cmd)
 {
-    if (!strncmp(cmd, "quit", sizeof("quit") - 1))
+    if (!strncmp(cmd, "quit", sizeof("quit") - 1) &&
+        cmd[sizeof("quit")] == '\0')
         return 1;
-    else if (!strncmp(cmd, "exit", sizeof("exit") - 1))
+    else if (!strncmp(cmd, "exit", sizeof("exit") - 1) &&
+        cmd[sizeof("exit")] == '\0')
         return 1;
-    else if (!strncmp(cmd, "bye", sizeof("bye") - 1))
+    else if (!strncmp(cmd, "bye", sizeof("bye") - 1) &&
+        cmd[sizeof("bye")] == '\0')
         return 1;
-    else if (!strncmp(cmd, "sair", sizeof("sair") - 1))
+    else if (!strncmp(cmd, "sair", sizeof("sair") - 1) &&
+        cmd[sizeof("sair")] == '\0')
         return 1;
-    else if (!strncmp(cmd, "adios", sizeof("adios") - 1))
+    else if (!strncmp(cmd, "adios", sizeof("adios") - 1) &&
+        cmd[sizeof("adios")] == '\0')
         return 1;
-    else if (!strncmp(cmd, "salir", sizeof("salir") - 1))
+    else if (!strncmp(cmd, "salir", sizeof("salir") - 1) &&
+        cmd[sizeof("salir")] == '\0')
         return 1;
-    else if (!strncmp(cmd, "tchau", sizeof("tchau") - 1))
+    else if (!strncmp(cmd, "tchau", sizeof("tchau") - 1) &&
+        cmd[sizeof("tchau")] == '\0')
         return 1;
     else
         return 0;
