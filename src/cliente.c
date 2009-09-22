@@ -68,7 +68,7 @@ main(int argc, char **argv)
     /* Obtem IP e porta do socket local */
     len = sizeof(local);
     Getsockname(sockfd, &local, &len);
-    fprintf(stdout, "Conexão local: %d.%d.%d.%d:%d\nConexão remota: %d.%d.%d.%d:%d\n",
+    fprintf(stdout, "Conexao local: %d.%d.%d.%d:%d\nConexao remota: %d.%d.%d.%d:%d\n",
             GETIP(local.sin_addr.s_addr), ntohs(local.sin_port),
 			GETIP(servaddr.sin_addr.s_addr), ntohs(servaddr.sin_port));
 

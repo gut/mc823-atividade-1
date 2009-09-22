@@ -12,7 +12,7 @@
     ((unsigned char *)&s_addr)[2], \
     ((unsigned char *)&s_addr)[3]
 
-/* Funções "envelopadoras" comuns */
+/* Funcoes "envelopadoras" comuns */
 
 int Socket(int domain, int type, int protocol);
 
