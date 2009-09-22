@@ -1,6 +1,8 @@
 #ifndef WRAPPER_H
 #define WRAPPER_H
 
+#define MAXLINE 4096
+
 /* Obtem IP na forma decimal 
  * Recebe um unsigned long s_addr;
  */
@@ -10,7 +12,7 @@
     ((unsigned char *)&s_addr)[2], \
     ((unsigned char *)&s_addr)[3]
 
-/* Wrappers for commom functions */
+/* Funções "envelopadoras" comuns */
 
 int Socket(int domain, int type, int protocol);
 

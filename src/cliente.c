@@ -5,8 +5,6 @@
 #include <unistd.h>
 #include "wrapper.h"
 
-#define MAXLINE 4096
-
 int
 received_quit_cmd(const char *cmd)
 {

@@ -13,7 +13,6 @@
 #endif
 #define LISTENQ 10
 #define MAXDATASIZE 1024
-#define MAXLINE 4096
 
 static void process_request(int);
 
