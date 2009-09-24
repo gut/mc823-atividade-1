@@ -1,0 +1,13 @@
+Essa árvore envolve dependências de cima para baixo, sendo o nível mais próximo
+à raiz dependente de ser feito antes do que os TODOS internos a ele.
+
+O nome do arquivo ou diretório deverá ser o resumo da operação, o seu conteúdo
+(ou o arquivo 'info' dentro do diretório) deverá conter dados mais detalhados
+sobre a implementação
+
+Quando um TODO for realizado, adicione o prefixo '!' no começo do arquivo /
+diretório. 
+ps: Se você terminar a tarefa básica de um diretório (descrita pelo arquivo
+'info') então coloque o '!' apenas no 'info', só coloque o '!' no nome do
+diretório se todos os TODOs internos a ele forem realizados.
+
