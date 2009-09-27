@@ -5,6 +5,10 @@ O nome do arquivo ou diretório deverá ser o resumo da operação, o seu conte�
 (ou o arquivo 'info' dentro do diretório) deverá conter dados mais detalhados
 sobre a implementação
 
+Ao escolher um TODO, adicione o prefixo @ no começo do arquivo/diretório.
+Um '@' no começo de um diretório significa que todos os TODOS daquele
+diretório serão feitos.
+
 Quando um TODO for realizado, adicione o prefixo '!' no começo do arquivo /
 diretório. 
 ps: Se você terminar a tarefa básica de um diretório (descrita pelo arquivo
