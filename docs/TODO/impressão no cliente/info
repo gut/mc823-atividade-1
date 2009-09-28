@@ -1,0 +1,3 @@
+o cliente deverá imprimir a execução do comando do lado do servidor e não mais o echo do seu comando enviado
+
+Note que atualmente o cliente somente imprime uma linha advinda do servidor. Porém, um comando enviado pode resultar em várias linhas de saída e o cliente deverá imprimir todas elas.
