@@ -1,44 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
 #include <netdb.h>
 #include <arpa/inet.h>
 #include "wrapper.h"
-
-void
-System(const char *command)
-{
-    if (system(command) < 0) {
-        perror("system");
-        exit(EXIT_FAILURE);
-    }
-}
-
-int
-Read(int fd, char *buf, size_t count)
-{
-    int n;
-
-    n = read(fd, buf, count);
-    if (n < 0) {
-        perror("read");
-        exit(EXIT_FAILURE);
-    }
-    return n;
-}
-
-void
-Write(int fd, const char *buf)
-{
-    int n;
-
-    n = write(fd, buf, strlen(buf));
-    if (n < 0) {
-        perror("write");
-        exit(EXIT_FAILURE);
-    }
-}
 
 int
 Socket(int domain, int type, int protocol)
