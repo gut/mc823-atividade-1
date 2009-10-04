@@ -1,0 +1,33 @@
+
+Respostas das questões propostas. Atividade 2.2:
+
+--------------------
+
+4. No trecho de código abaixo, que muito provavelmente estará presente nos códigos que você implementou, porque o servidor continua escutando e os clientes continuam com suas conexões estabelecidas mesmo após as chamadas dos Close?
+for (;;) {
+	connfd = Accept (listenfd,...);
+
+	if ( (pid=Fork()) == 0) {
+		Close(listenfd);
+		doit(connfd); // Faz alguma operação no socket
+		Close(connfd);
+		exit(0);
+	}
+	Close(connfd);
+}
+
+(O servidor continua com a conexão estabelecida após o Close pois como não há ACK de desconexão (vdd?) o servidor não sabe se o cliente sabe que a conexão foi desestabelecida, sendo assim ele ainda esperá por um tempo para garantir que não haverá mais requisições desse cliente)
+
+--------------------
+
+5. Comprove, utilizando ferramentas do sistema operacional, que os processos criados para manipular cada conexão individual do servidor aos clientes são filhos do processo original que foi executado.
+
+(Usar o ps --forest para enxergar as threads (vai funcionar é?))
+
+--------------------
+
+6. Utilizando ferramentas do sistema operacional, qual dos lados da conexão fica no estado TIME_WAIT após o encerramento da conexão? Isso condiz com a implementação que foi realizada? Justifique.
+
+(Use o netstat e comprove que o servidor que fica com o TIME_WAIT.)
+
+--------------------
