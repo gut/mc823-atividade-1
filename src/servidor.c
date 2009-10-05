@@ -3,7 +3,9 @@
 #include <string.h>
 #include <netdb.h>
 #include <unistd.h>
+#include <time.h>
 #include "wrapper.h"
+#include "util.h"
 
 #ifndef NI_MAXHOST
 #define NI_MAXHOST 1025
@@ -12,9 +14,8 @@
 #define NI_MAXSERV 32
 #endif
 #define LISTENQ 10
-#define MAXDATASIZE 1024
 
-static void process_request(int);
+static void process_request(int, const char*, const char*);
 
 int
 main(int argc, char **argv)
@@ -25,6 +26,8 @@ main(int argc, char **argv)
     char error[MAXLINE + 1];
     char host[NI_MAXHOST], hp[NI_MAXSERV];
     socklen_t len;
+    time_t thetime;
+    FILE *log;
 
     if (argc != 2) {
         snprintf(error, MAXLINE, "uso: %s <Port>", argv[0]);
@@ -53,9 +56,15 @@ main(int argc, char **argv)
     /* Deixa esse socket preparado para aceitar pedidos de conexao */
     Listen(listenfd, LISTENQ);
 
+    log = fopen("server.log", "w+");
+    if (!log) {
+        fprintf(stderr, "Could not open log file\n");
+        exit(EXIT_FAILURE);
+    }
+
     /*
-     * main loop: espere por um pedido de conexao, devolva o comando
-     * enviado pelo cliente, execute o comando e feche a conexao
+     * main loop: espere por um pedido de conexao, devolva saida do
+     * comando enviado pelo cliente e feche a conexao
      */
     for ( ; ; ) {
         /* Espera por um pedido de conexao */
@@ -64,38 +73,77 @@ main(int argc, char **argv)
 
         /* Determina quem enviou a mensagem */
         Getnameinfo(&clientaddr, len, host, sizeof(host), hp, sizeof(hp));
-        fprintf(stdout, "conexao estabelecida com %s:%s\n", host, hp);
+        time(&thetime);
+        struct tm *t = localtime(&thetime);
+        fprintf(log, "%s:%s conectado em %s", host, hp, asctime(t));
 
         pid = fork();
         if (pid == 0) {
+            char *h = strdup(host);
+            char *p = strdup(hp);
+
             /* Filho para de escutar conexoes */
             close(listenfd);
-            process_request(connfd);
+            process_request(connfd, host, hp);
 
             /* Filho encerra sua conexao */
             close(connfd);
+
+            fprintf(stdout, "%s:%s desconectado\n", h, p);
+            time(&thetime);
+            t = localtime(&thetime);
+            fprintf(log, "%s:%s desconectado em %s", h, p, asctime(t));
+
             exit(EXIT_SUCCESS);
+            free(h);
+            free(p);
         }
         /* Pai fecha a conexao */
         close(connfd);
     }
+    fclose(log);
 
     return 0;
 }
 
 static void
-process_request(int connfd)
+process_request(int connfd, const char *host, const char *port)
 {
-    char buf[MAXDATASIZE];
+    char buf[MAXDATASIZE], out[MAXDATASIZE];
+    FILE *pipe = NULL;
+    int len;
 
     while (1) {
-        bzero(buf, sizeof(buf));
         /* Le comando do cliente */
-        if (Read(connfd, buf, sizeof(buf)) == 0)
+        if (readall(connfd, buf, MAXDATASIZE) < 0)
             break;
-        /* Devolve o comando para o cliente */
-        Write(connfd, buf);
+
+        /* Imprime cliente e seu comando a ser executado */
+        fprintf(stdout, "%s:%s - %s\n", host, port, buf);
+
         /* Executa o comando recebido */
-        System(buf);
+        pipe = popen(buf, "r");
+        if (pipe == NULL) {
+            perror("popen");
+            continue;
+        }
+
+        /* Devolve saida do comando para o cliente */
+        while (!feof(pipe)) {
+            if (fgets(out, sizeof(out), pipe) != NULL) {
+                len = writeall(connfd, out, strlen(out));
+                if (len != strlen(out)) {
+                    perror("writeall");
+                    break;
+                }
+            }
+        }
+        /* Diz para cliente que nao ha mais dados */
+        len = write(connfd, "\0", 1);
+        if (len != 1)
+            perror("write");
+
+        if (pclose(pipe) < 0)
+            perror("pclose");
     }
 }

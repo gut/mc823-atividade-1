@@ -4,6 +4,7 @@
 #include <netdb.h>
 #include <unistd.h>
 #include "wrapper.h"
+#include "util.h"
 
 int
 received_quit_cmd(const char *cmd)
@@ -68,9 +69,10 @@ main(int argc, char **argv)
     /* Obtem IP e porta do socket local */
     len = sizeof(local);
     Getsockname(sockfd, &local, &len);
-    fprintf(stdout, "Conexao local: %d.%d.%d.%d:%d\nConexao remota: %d.%d.%d.%d:%d\n",
+    fprintf(stdout, "Conexao local: %d.%d.%d.%d:%d\n"
+            "Conexao remota: %d.%d.%d.%d:%d\n",
             GETIP(local.sin_addr.s_addr), ntohs(local.sin_port),
-			GETIP(servaddr.sin_addr.s_addr), ntohs(servaddr.sin_port));
+            GETIP(servaddr.sin_addr.s_addr), ntohs(servaddr.sin_port));
 
     /* Obtem comando do usuario */
     while (1) {
@@ -81,12 +83,23 @@ main(int argc, char **argv)
             break;
 
         /* Envia o comando */
-        Write(sockfd, sendline);
+        int len = writeall(sockfd, sendline, strlen(sendline) + 1);
+        if (len != strlen(sendline) + 1) {
+            perror("writeall");
+            continue;
+        }
 
         /* 0btem resposta do servidor */
-        bzero(&recvline, sizeof(recvline));
-        Read(sockfd, recvline, sizeof(recvline) - 1);
-        fprintf(stdout, "resposta servidor: %s", recvline);
+        int ret;
+        while (1) {
+            ret = readall(sockfd, recvline, MAXLINE - 1);
+            if (ret == CONNCLOSED || ret == READERROR)
+                break;
+            recvline[MAXLINE - 1] = '\0';
+            fprintf(stdout, "%s", recvline);
+            if (ret == ALLDATARECVD)
+                break;
+        }
     }
     /* Fecha conexao */
     close(sockfd);
