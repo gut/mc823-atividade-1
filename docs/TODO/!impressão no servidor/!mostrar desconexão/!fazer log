@@ -2,3 +2,7 @@ Logar as informações de conexão e desconexões, sendo a descrição de arquiv
 
 IP:Porta - hora da conexão
 IP:Porta - hora da desconexão
+
+Informações logadas ficaram no formato:
+<IP>:<Porta> conectado em <hora>
+<IP>:<Porta> desconectado em <hora>
