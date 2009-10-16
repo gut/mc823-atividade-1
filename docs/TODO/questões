@@ -1,8 +1,0 @@
-Responder questões 4, 5 e 6.
-
-Dicas:
-4 - O servidor continua com a conexão estabelecida após o Close pois como não há ACK de desconexão (vdd?) o servidor não sabe se o cliente sabe que a conexão foi desestabelecida, sendo assim ele ainda esperá por um tempo para garantir que não haverá mais requisições desse cliente
-
-5 - usar o ps --forest para enxergar as threads (vai funcionar é?)
-
-6 - use o netstat e comprove que o servidor que fica com o TIME_WAIT.
