@@ -6,4 +6,4 @@ _ @AT3 Relatar experimentos e resultados obtidos.
 _ @AT3 Utilizar netstat para descobrir numero clientes que realizam 3WHS de imediato (contar linhas que tenham estado que comprove conexão
 _ @AT3 Escrever scripts para executar várias instâncias de cliente em pqno intervalo de tempo ou usar cssh.
 @AT3 Usar sniffer para descobrir flags nos segmentos TCP do cliente enqto este não consegue conectar-se ao servidor
-@AT3 Gerar relatório com detalhes da implementações dos passos 1, 2 e 3 e respostas dos passos 4 e 7.
+@AT3 Gerar relatório com detalhes da implementações dos passos 1, 2 e 3 e respostas dos passos 4 e 8.
