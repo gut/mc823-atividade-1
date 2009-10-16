@@ -2,4 +2,5 @@
 @AT3 Modificar servidor para retardar remoção de sockets da fila. Usar sleep
 @AT3 Modificar servidor para corretamente finalizar processos zumbi quando cliente encerra conexão.
 @AT3 Realizar experimentos para descobrir quantos clientes (de 10) conseguem se conectar de imediato
+_ @AT3 Utilizar netstat para descobrir numero clientes que realizam 3WHS de imediato (contar linhas que tenham estado que comprove conexão
 _ @AT3 Escrever scripts para executar várias instâncias de cliente em pqno intervalo de tempo ou usar cssh.
