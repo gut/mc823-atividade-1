@@ -30,7 +30,16 @@ main(int argc, char **argv)
 
     if (argc != 3) {
         snprintf(error, MAXLINE, "uso: %s <Port> <Backlog size>", argv[0]);
-        perror(error);
+        fprintf(stderr, error);
+        exit(EXIT_FAILURE);
+    }
+
+    /* Define o tamanho do backlog a ser usado no Listen */
+    char *ptr = NULL;
+    errno = 0;
+    listenq = (int)strtol(argv[2], &ptr, 10);
+    if (errno || *ptr != '\0') {
+        fprintf(stderr, "ERRO: backlog '%s' invalido.\n", argv[2]);
         exit(EXIT_FAILURE);
     }
 
