@@ -107,7 +107,7 @@ WIN_GREY     = 0x08
 ############################################################
 # Be careful changing things below here
 
-import re, sys, time, getopt, sets, subprocess
+import re, sys, time, getopt, subprocess
 from shutil import copyfile
 
 # Guess the pager!
@@ -810,7 +810,7 @@ def edit(file):
 def removeDuplicates():
     """Removes duplicate lines in the TODO file"""
     taskCopy = getTaskDict()
-    theSet = sets.Set(taskCopy.values())
+    theSet = set(taskCopy.values())
     dupCount = len(taskCopy) - len(theSet)
     if dupCount > 0:
         count = 0
