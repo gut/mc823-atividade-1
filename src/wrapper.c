@@ -70,10 +70,8 @@ Inet_pton(int af, const char *src, void *dst)
 void
 Getsockname(int fd, struct sockaddr_in *addr, socklen_t *len)
 {
-    if (getsockname(fd, (struct sockaddr *)addr, len) < 0) {
+    if (getsockname(fd, (struct sockaddr *)addr, len) < 0)
         perror("getsockname");
-        exit(EXIT_FAILURE);
-    }
 }
 
 void
@@ -85,8 +83,6 @@ Getnameinfo(const struct sockaddr_in *addr, socklen_t len,
     /* gethostbyaddr eh obsoleta. Usando getnameinfo */
     error = getnameinfo((const struct sockaddr *)addr, len, host, hlen,
                         serv, slen, NI_NUMERICHOST|NI_NUMERICSERV);
-    if (error != 0) {
+    if (error != 0)
         fprintf(stderr, "erro em getnameinfo: %s\n", gai_strerror(error));
-        exit(EXIT_FAILURE);
-    }
 }

@@ -4,15 +4,26 @@
 #include <netdb.h>
 #include <unistd.h>
 #include <time.h>
+#include <errno.h>
 #include "wrapper.h"
 #include "util.h"
 
 #ifndef NI_MAXHOST
 #define NI_MAXHOST 1025
 #endif
+
 #ifndef NI_MAXSERV
 #define NI_MAXSERV 32
 #endif
+
+#define LOG(fmt, rest...)                       \
+    do {                                        \
+        FILE *log = fopen("server.log", "a");   \
+        if (log) {                              \
+            fprintf(log, fmt, ## rest);         \
+            fclose(log);                        \
+        }                                       \
+    } while (0)
 
 static void process_request(int, const char*, const char*);
 
@@ -26,7 +37,6 @@ main(int argc, char **argv)
     char host[NI_MAXHOST], hp[NI_MAXSERV];
     socklen_t len;
     time_t thetime;
-    FILE *log;
 
     if (argc != 3) {
         snprintf(error, MAXLINE, "uso: %s <Port> <Backlog size>", argv[0]);
@@ -38,7 +48,10 @@ main(int argc, char **argv)
     char *ptr = NULL;
     errno = 0;
     listenq = (int)strtol(argv[2], &ptr, 10);
-    if (errno || *ptr != '\0') {
+    if (errno != 0) {
+        perror("strtol");
+        exit(EXIT_FAILURE);
+    } else if (*ptr != '\0') {
         fprintf(stderr, "ERRO: backlog '%s' invalido.\n", argv[2]);
         exit(EXIT_FAILURE);
     }
@@ -61,16 +74,15 @@ main(int argc, char **argv)
     /* Associa o socket pai com uma porta */
     Bind(listenfd, &servaddr, sizeof(servaddr));
 
-	/* Define o tamanho do backlog a ser usado no Listen */
-	listenq = atoi(argv[2]);
     /* Deixa esse socket preparado para aceitar pedidos de conexao */
     Listen(listenfd, listenq);
 
-    log = fopen("server.log", "w+");
-    if (!log) {
-        fprintf(stderr, "Could not open log file\n");
-        exit(EXIT_FAILURE);
-    }
+    /* Testando se eh possivel abrir arquivo de log */
+    FILE *log = fopen("server.log", "a");
+    if (!log)
+        fprintf(stderr, "AVISO: Nao foi possivel abrir arquivo de log."
+                " Nenhuma informacao serah logada.\n");
+    fclose(log);
 
     /*
      * main loop: espere por um pedido de conexao, devolva saida do
@@ -85,7 +97,7 @@ main(int argc, char **argv)
         Getnameinfo(&clientaddr, len, host, sizeof(host), hp, sizeof(hp));
         time(&thetime);
         struct tm *t = localtime(&thetime);
-        fprintf(log, "%s:%s conectado em %s", host, hp, asctime(t));
+        LOG("%s:%s conectado em %s", host, hp, asctime(t));
 
         pid = fork();
         if (pid == 0) {
@@ -94,24 +106,21 @@ main(int argc, char **argv)
 
             /* Filho para de escutar conexoes */
             close(listenfd);
-            process_request(connfd, host, hp);
-
-            /* Filho encerra sua conexao */
-            close(connfd);
+            process_request(connfd, h, p);
 
             fprintf(stdout, "%s:%s desconectado\n", h, p);
             time(&thetime);
             t = localtime(&thetime);
-            fprintf(log, "%s:%s desconectado em %s", h, p, asctime(t));
+            LOG("%s:%s desconectado em %s", h, p, asctime(t));
 
-            exit(EXIT_SUCCESS);
             free(h);
             free(p);
+
+            exit(EXIT_SUCCESS);
         }
         /* Pai fecha a conexao */
         close(connfd);
     }
-    fclose(log);
 
     return 0;
 }
@@ -156,4 +165,6 @@ process_request(int connfd, const char *host, const char *port)
         if (pclose(pipe) < 0)
             perror("pclose");
     }
+    /* Filho encerra sua conexao */
+    close(connfd);
 }
