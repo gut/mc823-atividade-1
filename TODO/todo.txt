@@ -1,6 +1,6 @@
 (A) @AT3 Modificar servidor para passar backlog como argumento de linha de comando
 @AT3 Modificar servidor para retardar remoção de sockets da fila. Usar sleep
-(B) @AT3 Modificar servidor para corretamente finalizar processos zumbi quando cliente encerra conexão.
+(B) @AT3 Modificar servidor para corretamente finalizar processos zumbi quando cliente encerra conexão.  # Rafael
 @AT3 Realizar experimentos para descobrir quantos clientes (de 10) conseguem se conectar de imediato
 _ @AT3 Relatar experimentos e resultados obtidos.
 _ @AT3 Utilizar netstat para descobrir numero clientes que realizam 3WHS de imediato (contar linhas que tenham estado que comprove conexão
