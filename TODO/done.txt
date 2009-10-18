@@ -1,2 +1,3 @@
 x 2009-10-18 1
 x 2009-10-18 @AT3 Modificar servidor para passar backlog como argumento de linha de comando # Gut
+x 2009-10-18 @AT3 Modificar servidor para corretamente finalizar processos zumbi quando cliente encerra conexão.  # Rafael
