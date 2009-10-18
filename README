@@ -13,4 +13,4 @@ Usando o script todo.py:
     ./todo.py lsa
 
 5. Marcar tarefa como concluida:
-    ./todo.py done <numero todo concluido> "Comentario [opcional]"
+    ./todo.py do <numero todo concluido> "Comentario [opcional]"
