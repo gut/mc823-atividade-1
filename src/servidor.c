@@ -13,14 +13,13 @@
 #ifndef NI_MAXSERV
 #define NI_MAXSERV 32
 #endif
-#define LISTENQ 10
 
 static void process_request(int, const char*, const char*);
 
 int
 main(int argc, char **argv)
 {
-    int listenfd, connfd, pid;
+    int listenfd, connfd, pid, listenq;
     struct sockaddr_in servaddr;
     struct sockaddr_in clientaddr;
     char error[MAXLINE + 1];
@@ -29,8 +28,8 @@ main(int argc, char **argv)
     time_t thetime;
     FILE *log;
 
-    if (argc != 2) {
-        snprintf(error, MAXLINE, "uso: %s <Port>", argv[0]);
+    if (argc != 3) {
+        snprintf(error, MAXLINE, "uso: %s <Port> <Backlog size>", argv[0]);
         perror(error);
         exit(EXIT_FAILURE);
     }
@@ -53,8 +52,10 @@ main(int argc, char **argv)
     /* Associa o socket pai com uma porta */
     Bind(listenfd, &servaddr, sizeof(servaddr));
 
+	/* Define o tamanho do backlog a ser usado no Listen */
+	listenq = atoi(argv[2]);
     /* Deixa esse socket preparado para aceitar pedidos de conexao */
-    Listen(listenfd, LISTENQ);
+    Listen(listenfd, listenq);
 
     log = fopen("server.log", "w+");
     if (!log) {
