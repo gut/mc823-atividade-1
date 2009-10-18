@@ -4,6 +4,8 @@
 #include <netdb.h>
 #include <unistd.h>
 #include <time.h>
+#include <sys/wait.h>
+#include <signal.h>
 #include <errno.h>
 #include "wrapper.h"
 #include "util.h"
@@ -26,6 +28,8 @@
     } while (0)
 
 static void process_request(int, const char*, const char*);
+
+static void sigchld_handler(int);
 
 int
 main(int argc, char **argv)
@@ -77,6 +81,9 @@ main(int argc, char **argv)
     /* Deixa esse socket preparado para aceitar pedidos de conexao */
     Listen(listenfd, listenq);
 
+    /* Funcao para lidar com filhos-zumbi */
+    signal(SIGCHLD, sigchld_handler);
+
     /* Testando se eh possivel abrir arquivo de log */
     FILE *log = fopen("server.log", "a");
     if (!log)
@@ -91,7 +98,14 @@ main(int argc, char **argv)
     for ( ; ; ) {
         /* Espera por um pedido de conexao */
         len = sizeof(clientaddr);
-        connfd = Accept(listenfd, &clientaddr, &len);
+        connfd = accept(listenfd, (struct sockaddr *)&clientaddr, &len);
+        if (connfd < 0) {
+            /* Algum sinal chegou no meio do accept. Ignore */
+            if (errno == EINTR)
+                continue;
+            else
+                perror("accept");
+        }
 
         /* Determina quem enviou a mensagem */
         Getnameinfo(&clientaddr, len, host, sizeof(host), hp, sizeof(hp));
@@ -162,9 +176,15 @@ process_request(int connfd, const char *host, const char *port)
         if (len != 1)
             perror("write");
 
-        if (pclose(pipe) < 0)
+        if (pclose(pipe) < 0 && errno != ECHILD)
             perror("pclose");
     }
     /* Filho encerra sua conexao */
     close(connfd);
+}
+
+
+static void sigchld_handler(int signal)
+{
+    while (waitpid(-1, NULL, WNOHANG) > 0);
 }
