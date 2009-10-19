@@ -17,7 +17,8 @@
 #ifndef NI_MAXSERV
 #define NI_MAXSERV 32
 #endif
-#define SLEEP_TIME 10
+
+#define SLEEP_TIME 60
 
 #define LOG(fmt, rest...)                       \
     do {                                        \
@@ -92,6 +93,7 @@ main(int argc, char **argv)
                 " Nenhuma informacao serah logada.\n");
     fclose(log);
 
+    sleep(SLEEP_TIME);
     /*
      * main loop: espere por um pedido de conexao, devolva saida do
      * comando enviado pelo cliente e feche a conexao
@@ -181,7 +183,6 @@ process_request(int connfd, const char *host, const char *port)
             perror("pclose");
     }
     /* Filho encerra sua conexao */
-    sleep(SLEEP_TIME);
     close(connfd);
 }
 
