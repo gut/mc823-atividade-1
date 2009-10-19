@@ -1,0 +1,26 @@
+tcp        0      0 0.0.0.0:1026            0.0.0.0:*               LISTEN      3486/servidor       
+tcp        0      1 127.0.0.1:55940         127.0.0.1:1026          SYN_SENT    3492/cliente        
+tcp        0      1 127.0.0.1:55944         127.0.0.1:1026          SYN_SENT    3496/cliente        
+tcp        0      0 127.0.0.1:55937         127.0.0.1:1026          ESTABLISHED 3489/cliente        
+tcp        0      1 127.0.0.1:55945         127.0.0.1:1026          SYN_SENT    3497/cliente        
+tcp        0      1 127.0.0.1:55939         127.0.0.1:1026          ESTABLISHED 3491/cliente        
+tcp        0      1 127.0.0.1:55938         127.0.0.1:1026          ESTABLISHED 3490/cliente        
+tcp        0      1 127.0.0.1:55943         127.0.0.1:1026          SYN_SENT    3495/cliente        
+tcp        0      1 127.0.0.1:55941         127.0.0.1:1026          SYN_SENT    3493/cliente        
+tcp        0      1 127.0.0.1:55942         127.0.0.1:1026          SYN_SENT    3494/cliente        
+tcp        0      0 127.0.0.1:55936         127.0.0.1:1026          ESTABLISHED 3488/cliente        
+
+Numero de clientes simultaneos: 4
+tcp        0      0 0.0.0.0:1029            0.0.0.0:*               LISTEN      4249/servidor       
+tcp        0      1 127.0.0.1:42096         127.0.0.1:1029          ESTABLISHED 4254/cliente        
+tcp        0      1 127.0.0.1:42101         127.0.0.1:1029          SYN_SENT    4259/cliente        
+tcp        0      1 127.0.0.1:42095         127.0.0.1:1029          ESTABLISHED 4253/cliente        
+tcp        0      1 127.0.0.1:42097         127.0.0.1:1029          SYN_SENT    4255/cliente        
+tcp        0      1 127.0.0.1:42098         127.0.0.1:1029          SYN_SENT    4256/cliente        
+tcp        0      1 127.0.0.1:42102         127.0.0.1:1029          SYN_SENT    4260/cliente        
+tcp        0      0 127.0.0.1:42094         127.0.0.1:1029          ESTABLISHED 4252/cliente        
+tcp        0      1 127.0.0.1:42099         127.0.0.1:1029          SYN_SENT    4257/cliente        
+tcp        0      1 127.0.0.1:42100         127.0.0.1:1029          SYN_SENT    4258/cliente        
+tcp        0      0 127.0.0.1:42093         127.0.0.1:1029          ESTABLISHED 4251/cliente        
+
+Numero de clientes simultaneos: 8

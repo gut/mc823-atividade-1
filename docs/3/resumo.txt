@@ -1,0 +1,19 @@
+Conex~ao:
+cliente > servidor [SYN] Seq=0 Win=32792 Len=0 MSS=16396 
+servidor > cliente [SYN, ACK] Seq=0 Ack=1 Win=32768 Len=0 MSS=16396 
+cliente > servidor [ACK] Seq=1 Ack=1 Win=32832 Len=0 
+
+Envio do "date":
+cliente > servidor [PSH, ACK] Seq=1 Ack=1 Win=32832 Len=6 
+servidor > cliente [ACK] Seq=1 Ack=7 Win=32768 Len=0 
+
+Resposta do servidor:
+servidor > cliente [PSH, ACK] Seq=1 Ack=7 Win=32768 Len=30 
+cliente > servidor [ACK] Seq=7 Ack=31 Win=32832 Len=0 
+servidor > cliente [PSH, ACK] Seq=31 Ack=7 Win=32768 Len=1 
+cliente > servidor [ACK] Seq=7 Ack=32 Win=32832 Len=0 
+
+Requisiç~ao do cliente para desconex~ao:
+cliente > servidor [FIN, ACK] Seq=7 Ack=32 Win=32832 Len=0 
+servidor > cliente [FIN, ACK] Seq=32 Ack=8 Win=32768 Len=0 
+cliente > servidor [ACK] Seq=8 Ack=33 Win=32832 Len=0 

@@ -1,0 +1,26 @@
+tcp        0      0 0.0.0.0:1028            0.0.0.0:*               LISTEN      3548/servidor       
+tcp        0      0 127.0.0.1:35058         127.0.0.1:1028          ESTABLISHED 3550/cliente        
+tcp        0      0 127.0.0.1:35059         127.0.0.1:1028          ESTABLISHED 3551/cliente        
+tcp        0      1 127.0.0.1:35067         127.0.0.1:1028          SYN_SENT    3559/cliente        
+tcp        0      1 127.0.0.1:35062         127.0.0.1:1028          ESTABLISHED 3554/cliente        
+tcp        0      1 127.0.0.1:35063         127.0.0.1:1028          ESTABLISHED 3555/cliente        
+tcp        0      1 127.0.0.1:35064         127.0.0.1:1028          SYN_SENT    3556/cliente        
+tcp        0      1 127.0.0.1:35066         127.0.0.1:1028          SYN_SENT    3558/cliente        
+tcp        0      1 127.0.0.1:35065         127.0.0.1:1028          SYN_SENT    3557/cliente        
+tcp        0      0 127.0.0.1:35061         127.0.0.1:1028          ESTABLISHED 3553/cliente        
+tcp        0      0 127.0.0.1:35060         127.0.0.1:1028          ESTABLISHED 3552/cliente        
+
+Numero de clientes simultaneos: 6
+tcp        0      0 0.0.0.0:1031            0.0.0.0:*               LISTEN      4291/servidor       
+tcp        0      1 127.0.0.1:37219         127.0.0.1:1031          ESTABLISHED 4297/cliente        
+tcp        0      1 127.0.0.1:37222         127.0.0.1:1031          SYN_SENT    4300/cliente        
+tcp        0      0 127.0.0.1:37215         127.0.0.1:1031          ESTABLISHED 4293/cliente        
+tcp        0      1 127.0.0.1:37221         127.0.0.1:1031          SYN_SENT    4299/cliente        
+tcp        0      1 127.0.0.1:37223         127.0.0.1:1031          SYN_SENT    4301/cliente        
+tcp        0      1 127.0.0.1:37220         127.0.0.1:1031          ESTABLISHED 4298/cliente        
+tcp        0      0 127.0.0.1:37217         127.0.0.1:1031          ESTABLISHED 4295/cliente        
+tcp        0      0 127.0.0.1:37216         127.0.0.1:1031          ESTABLISHED 4294/cliente        
+tcp        0      1 127.0.0.1:37224         127.0.0.1:1031          SYN_SENT    4302/cliente        
+tcp        0      0 127.0.0.1:37218         127.0.0.1:1031          ESTABLISHED 4296/cliente        
+
+Numero de clientes simultaneos: 12

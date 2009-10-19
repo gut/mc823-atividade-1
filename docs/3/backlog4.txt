@@ -1,0 +1,26 @@
+tcp        0      0 0.0.0.0:1029            0.0.0.0:*               LISTEN      3569/servidor       
+tcp        0      1 127.0.0.1:42822         127.0.0.1:1029          SYN_SENT    3580/cliente        
+tcp        0      0 127.0.0.1:42813         127.0.0.1:1029          ESTABLISHED 3571/cliente        
+tcp        0      0 127.0.0.1:42814         127.0.0.1:1029          ESTABLISHED 3572/cliente        
+tcp        0      0 127.0.0.1:42816         127.0.0.1:1029          ESTABLISHED 3574/cliente        
+tcp        0      1 127.0.0.1:42818         127.0.0.1:1029          ESTABLISHED 3576/cliente        
+tcp        0      0 127.0.0.1:42815         127.0.0.1:1029          ESTABLISHED 3573/cliente        
+tcp        0      1 127.0.0.1:42819         127.0.0.1:1029          ESTABLISHED 3577/cliente        
+tcp        0      1 127.0.0.1:42820         127.0.0.1:1029          SYN_SENT    3578/cliente        
+tcp        0      0 127.0.0.1:42817         127.0.0.1:1029          ESTABLISHED 3575/cliente        
+tcp        0      1 127.0.0.1:42821         127.0.0.1:1029          SYN_SENT    3579/cliente        
+
+Numero de clientes simultaneos: 7
+tcp        0      0 0.0.0.0:1032            0.0.0.0:*               LISTEN      4312/servidor       
+tcp        0      0 127.0.0.1:36885         127.0.0.1:1032          ESTABLISHED 4318/cliente        
+tcp        0      0 127.0.0.1:36883         127.0.0.1:1032          ESTABLISHED 4316/cliente        
+tcp        0      1 127.0.0.1:36886         127.0.0.1:1032          ESTABLISHED 4319/cliente        
+tcp        0      1 127.0.0.1:36887         127.0.0.1:1032          ESTABLISHED 4320/cliente        
+tcp        0      0 127.0.0.1:36881         127.0.0.1:1032          ESTABLISHED 4314/cliente        
+tcp        0      0 127.0.0.1:36882         127.0.0.1:1032          ESTABLISHED 4315/cliente        
+tcp        0      1 127.0.0.1:36889         127.0.0.1:1032          SYN_SENT    4322/cliente        
+tcp        0      1 127.0.0.1:36888         127.0.0.1:1032          SYN_SENT    4321/cliente        
+tcp        0      0 127.0.0.1:36884         127.0.0.1:1032          ESTABLISHED 4317/cliente        
+tcp        0      1 127.0.0.1:36890         127.0.0.1:1032          SYN_SENT    4323/cliente        
+
+Numero de clientes simultaneos: 14

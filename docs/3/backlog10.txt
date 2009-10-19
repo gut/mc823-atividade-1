@@ -1,0 +1,26 @@
+tcp        0      0 0.0.0.0:1035            0.0.0.0:*               LISTEN      3810/servidor       
+tcp        0      0 127.0.0.1:45942         127.0.0.1:1035          ESTABLISHED 3815/cliente        
+tcp        0      0 127.0.0.1:45945         127.0.0.1:1035          ESTABLISHED 3818/cliente        
+tcp        0      0 127.0.0.1:45939         127.0.0.1:1035          ESTABLISHED 3812/cliente        
+tcp        0      0 127.0.0.1:45947         127.0.0.1:1035          ESTABLISHED 3820/cliente        
+tcp        0      0 127.0.0.1:45946         127.0.0.1:1035          ESTABLISHED 3819/cliente        
+tcp        0      0 127.0.0.1:45943         127.0.0.1:1035          ESTABLISHED 3816/cliente        
+tcp        0      0 127.0.0.1:45944         127.0.0.1:1035          ESTABLISHED 3817/cliente        
+tcp        0      0 127.0.0.1:45941         127.0.0.1:1035          ESTABLISHED 3814/cliente        
+tcp        0      0 127.0.0.1:45948         127.0.0.1:1035          ESTABLISHED 3821/cliente        
+tcp        0      0 127.0.0.1:45940         127.0.0.1:1035          ESTABLISHED 3813/cliente        
+
+Numero de clientes simultaneos: 10
+tcp        0      0 0.0.0.0:1038            0.0.0.0:*               LISTEN      4463/servidor       
+tcp        0      0 127.0.0.1:49532         127.0.0.1:1038          ESTABLISHED 4468/cliente        
+tcp        0      0 127.0.0.1:49536         127.0.0.1:1038          ESTABLISHED 4472/cliente        
+tcp        0      0 127.0.0.1:49533         127.0.0.1:1038          ESTABLISHED 4469/cliente        
+tcp        0      0 127.0.0.1:49534         127.0.0.1:1038          ESTABLISHED 4470/cliente        
+tcp        0      0 127.0.0.1:49531         127.0.0.1:1038          ESTABLISHED 4467/cliente        
+tcp        0      0 127.0.0.1:49537         127.0.0.1:1038          ESTABLISHED 4473/cliente        
+tcp        0      0 127.0.0.1:49535         127.0.0.1:1038          ESTABLISHED 4471/cliente        
+tcp        0      0 127.0.0.1:49529         127.0.0.1:1038          ESTABLISHED 4465/cliente        
+tcp        0      0 127.0.0.1:49530         127.0.0.1:1038          ESTABLISHED 4466/cliente        
+tcp        0      0 127.0.0.1:49538         127.0.0.1:1038          ESTABLISHED 4474/cliente        
+
+Numero de clientes simultaneos: 20

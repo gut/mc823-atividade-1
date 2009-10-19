@@ -1,0 +1,26 @@
+tcp        0      0 0.0.0.0:1027            0.0.0.0:*               LISTEN      3507/servidor       
+tcp        0      0 127.0.0.1:33101         127.0.0.1:1027          ESTABLISHED 3509/cliente        
+tcp        0      1 127.0.0.1:33108         127.0.0.1:1027          SYN_SENT    3516/cliente        
+tcp        0      1 127.0.0.1:33110         127.0.0.1:1027          SYN_SENT    3518/cliente        
+tcp        0      0 127.0.0.1:33103         127.0.0.1:1027          ESTABLISHED 3511/cliente        
+tcp        0      1 127.0.0.1:33107         127.0.0.1:1027          SYN_SENT    3515/cliente        
+tcp        0      1 127.0.0.1:33106         127.0.0.1:1027          SYN_SENT    3514/cliente        
+tcp        0      1 127.0.0.1:33105         127.0.0.1:1027          ESTABLISHED 3513/cliente        
+tcp        0      1 127.0.0.1:33104         127.0.0.1:1027          ESTABLISHED 3512/cliente        
+tcp        0      0 127.0.0.1:33102         127.0.0.1:1027          ESTABLISHED 3510/cliente        
+tcp        0      1 127.0.0.1:33109         127.0.0.1:1027          SYN_SENT    3517/cliente        
+
+Numero de clientes simultaneos: 5
+tcp        0      0 0.0.0.0:1030            0.0.0.0:*               LISTEN      4270/servidor       
+tcp        0      1 127.0.0.1:34131         127.0.0.1:1030          SYN_SENT    4280/cliente        
+tcp        0      1 127.0.0.1:34130         127.0.0.1:1030          SYN_SENT    4279/cliente        
+tcp        0      1 127.0.0.1:34128         127.0.0.1:1030          SYN_SENT    4277/cliente        
+tcp        0      1 127.0.0.1:34127         127.0.0.1:1030          ESTABLISHED 4276/cliente        
+tcp        0      0 127.0.0.1:34124         127.0.0.1:1030          ESTABLISHED 4273/cliente        
+tcp        0      0 127.0.0.1:34123         127.0.0.1:1030          ESTABLISHED 4272/cliente        
+tcp        0      0 127.0.0.1:34125         127.0.0.1:1030          ESTABLISHED 4274/cliente        
+tcp        0      1 127.0.0.1:34126         127.0.0.1:1030          ESTABLISHED 4275/cliente        
+tcp        0      1 127.0.0.1:34132         127.0.0.1:1030          SYN_SENT    4281/cliente        
+tcp        0      1 127.0.0.1:34129         127.0.0.1:1030          SYN_SENT    4278/cliente        
+
+Numero de clientes simultaneos: 10

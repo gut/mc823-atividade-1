@@ -1,0 +1,243 @@
+No.     Time        Source                Destination           Protocol Info
+      1 0.000000    127.0.0.1             127.0.0.1             TCP      33327 > 1028 [SYN] Seq=0 Win=32792 Len=0 MSS=16396 TSV=700061 TSER=0 WS=6
+
+Frame 1 (74 bytes on wire, 74 bytes captured)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+Internet Protocol, Src: 127.0.0.1 (127.0.0.1), Dst: 127.0.0.1 (127.0.0.1)
+Transmission Control Protocol, Src Port: 33327 (33327), Dst Port: 1028 (1028), Seq: 0, Len: 0
+    Source port: 33327 (33327)
+    Destination port: 1028 (1028)
+    [Stream index: 0]
+    Sequence number: 0    (relative sequence number)
+    Header length: 40 bytes
+    Flags: 0x02 (SYN)
+    Window size: 32792
+    Checksum: 0x7a9d [validation disabled]
+    Options: (20 bytes)
+
+No.     Time        Source                Destination           Protocol Info
+      2 0.000028    127.0.0.1             127.0.0.1             TCP      1028 > 33327 [SYN, ACK] Seq=0 Ack=1 Win=32768 Len=0 MSS=16396 TSV=700061 TSER=700061 WS=6
+
+Frame 2 (74 bytes on wire, 74 bytes captured)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+Internet Protocol, Src: 127.0.0.1 (127.0.0.1), Dst: 127.0.0.1 (127.0.0.1)
+Transmission Control Protocol, Src Port: 1028 (1028), Dst Port: 33327 (33327), Seq: 0, Ack: 1, Len: 0
+    Source port: 1028 (1028)
+    Destination port: 33327 (33327)
+    [Stream index: 0]
+    Sequence number: 0    (relative sequence number)
+    Acknowledgement number: 1    (relative ack number)
+    Header length: 40 bytes
+    Flags: 0x12 (SYN, ACK)
+    Window size: 32768
+    Checksum: 0x2f6a [validation disabled]
+    Options: (20 bytes)
+    [SEQ/ACK analysis]
+
+No.     Time        Source                Destination           Protocol Info
+      3 0.000051    127.0.0.1             127.0.0.1             TCP      33327 > 1028 [ACK] Seq=1 Ack=1 Win=32832 Len=0 TSV=700061 TSER=700061
+
+Frame 3 (66 bytes on wire, 66 bytes captured)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+Internet Protocol, Src: 127.0.0.1 (127.0.0.1), Dst: 127.0.0.1 (127.0.0.1)
+Transmission Control Protocol, Src Port: 33327 (33327), Dst Port: 1028 (1028), Seq: 1, Ack: 1, Len: 0
+    Source port: 33327 (33327)
+    Destination port: 1028 (1028)
+    [Stream index: 0]
+    Sequence number: 1    (relative sequence number)
+    Acknowledgement number: 1    (relative ack number)
+    Header length: 32 bytes
+    Flags: 0x10 (ACK)
+    Window size: 32832 (scaled)
+    Checksum: 0x168d [validation disabled]
+    Options: (12 bytes)
+    [SEQ/ACK analysis]
+
+No.     Time        Source                Destination           Protocol Info
+      4 5.201965    127.0.0.1             127.0.0.1             TCP      33327 > 1028 [PSH, ACK] Seq=1 Ack=1 Win=32832 Len=6 TSV=701622 TSER=700061
+
+Frame 4 (72 bytes on wire, 72 bytes captured)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+Internet Protocol, Src: 127.0.0.1 (127.0.0.1), Dst: 127.0.0.1 (127.0.0.1)
+Transmission Control Protocol, Src Port: 33327 (33327), Dst Port: 1028 (1028), Seq: 1, Ack: 1, Len: 6
+    Source port: 33327 (33327)
+    Destination port: 1028 (1028)
+    [Stream index: 0]
+    Sequence number: 1    (relative sequence number)
+    [Next sequence number: 7    (relative sequence number)]
+    Acknowledgement number: 1    (relative ack number)
+    Header length: 32 bytes
+    Flags: 0x18 (PSH, ACK)
+    Window size: 32832 (scaled)
+    Checksum: 0xfe2e [validation disabled]
+    Options: (12 bytes)
+    [SEQ/ACK analysis]
+Data (6 bytes)
+
+0000  64 61 74 65 0a 00                                 date..
+    Data: 646174650A00
+    [Length: 6]
+
+No.     Time        Source                Destination           Protocol Info
+      5 5.201986    127.0.0.1             127.0.0.1             TCP      1028 > 33327 [ACK] Seq=1 Ack=7 Win=32768 Len=0 TSV=701622 TSER=701622
+
+Frame 5 (66 bytes on wire, 66 bytes captured)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+Internet Protocol, Src: 127.0.0.1 (127.0.0.1), Dst: 127.0.0.1 (127.0.0.1)
+Transmission Control Protocol, Src Port: 1028 (1028), Dst Port: 33327 (33327), Seq: 1, Ack: 7, Len: 0
+    Source port: 1028 (1028)
+    Destination port: 33327 (33327)
+    [Stream index: 0]
+    Sequence number: 1    (relative sequence number)
+    Acknowledgement number: 7    (relative ack number)
+    Header length: 32 bytes
+    Flags: 0x10 (ACK)
+    Window size: 32768 (scaled)
+    Checksum: 0x0a56 [validation disabled]
+    Options: (12 bytes)
+    [SEQ/ACK analysis]
+
+No.     Time        Source                Destination           Protocol Info
+      6 57.892242   127.0.0.1             127.0.0.1             TCP      1028 > 33327 [PSH, ACK] Seq=1 Ack=7 Win=32768 Len=30 TSV=717429 TSER=701622
+
+Frame 6 (96 bytes on wire, 96 bytes captured)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+Internet Protocol, Src: 127.0.0.1 (127.0.0.1), Dst: 127.0.0.1 (127.0.0.1)
+Transmission Control Protocol, Src Port: 1028 (1028), Dst Port: 33327 (33327), Seq: 1, Ack: 7, Len: 30
+    Source port: 1028 (1028)
+    Destination port: 33327 (33327)
+    [Stream index: 0]
+    Sequence number: 1    (relative sequence number)
+    [Next sequence number: 31    (relative sequence number)]
+    Acknowledgement number: 7    (relative ack number)
+    Header length: 32 bytes
+    Flags: 0x18 (PSH, ACK)
+    Window size: 32768 (scaled)
+    Checksum: 0xfe46 [validation disabled]
+    Options: (12 bytes)
+    [SEQ/ACK analysis]
+Data (30 bytes)
+
+0000  4d 6f 6e 20 4f 63 74 20 31 39 20 32 31 3a 33 32   Mon Oct 19 21:32
+0010  3a 34 33 20 42 52 53 54 20 32 30 30 39 0a         :43 BRST 2009.
+    Data: 4D6F6E204F63742031392032313A33323A34332042525354...
+    [Length: 30]
+
+No.     Time        Source                Destination           Protocol Info
+      7 57.892293   127.0.0.1             127.0.0.1             TCP      33327 > 1028 [ACK] Seq=7 Ack=31 Win=32832 Len=0 TSV=717429 TSER=717429
+
+Frame 7 (66 bytes on wire, 66 bytes captured)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+Internet Protocol, Src: 127.0.0.1 (127.0.0.1), Dst: 127.0.0.1 (127.0.0.1)
+Transmission Control Protocol, Src Port: 33327 (33327), Dst Port: 1028 (1028), Seq: 7, Ack: 31, Len: 0
+    Source port: 33327 (33327)
+    Destination port: 1028 (1028)
+    [Stream index: 0]
+    Sequence number: 7    (relative sequence number)
+    Acknowledgement number: 31    (relative ack number)
+    Header length: 32 bytes
+    Flags: 0x10 (ACK)
+    Window size: 32832 (scaled)
+    Checksum: 0x8eb8 [validation disabled]
+    Options: (12 bytes)
+    [SEQ/ACK analysis]
+
+No.     Time        Source                Destination           Protocol Info
+      8 57.892380   127.0.0.1             127.0.0.1             TCP      1028 > 33327 [PSH, ACK] Seq=31 Ack=7 Win=32768 Len=1 TSV=717429 TSER=717429
+
+Frame 8 (67 bytes on wire, 67 bytes captured)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+Internet Protocol, Src: 127.0.0.1 (127.0.0.1), Dst: 127.0.0.1 (127.0.0.1)
+Transmission Control Protocol, Src Port: 1028 (1028), Dst Port: 33327 (33327), Seq: 31, Ack: 7, Len: 1
+    Source port: 1028 (1028)
+    Destination port: 33327 (33327)
+    [Stream index: 0]
+    Sequence number: 31    (relative sequence number)
+    [Next sequence number: 32    (relative sequence number)]
+    Acknowledgement number: 7    (relative ack number)
+    Header length: 32 bytes
+    Flags: 0x18 (PSH, ACK)
+    Window size: 32768 (scaled)
+    Checksum: 0xfe29 [validation disabled]
+    Options: (12 bytes)
+    [SEQ/ACK analysis]
+Data (1 byte)
+
+0000  00                                                .
+    Data: 00
+    [Length: 1]
+
+No.     Time        Source                Destination           Protocol Info
+      9 57.892392   127.0.0.1             127.0.0.1             TCP      33327 > 1028 [ACK] Seq=7 Ack=32 Win=32832 Len=0 TSV=717429 TSER=717429
+
+Frame 9 (66 bytes on wire, 66 bytes captured)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+Internet Protocol, Src: 127.0.0.1 (127.0.0.1), Dst: 127.0.0.1 (127.0.0.1)
+Transmission Control Protocol, Src Port: 33327 (33327), Dst Port: 1028 (1028), Seq: 7, Ack: 32, Len: 0
+    Source port: 33327 (33327)
+    Destination port: 1028 (1028)
+    [Stream index: 0]
+    Sequence number: 7    (relative sequence number)
+    Acknowledgement number: 32    (relative ack number)
+    Header length: 32 bytes
+    Flags: 0x10 (ACK)
+    Window size: 32832 (scaled)
+    Checksum: 0x8eb7 [validation disabled]
+    Options: (12 bytes)
+    [SEQ/ACK analysis]
+
+No.     Time        Source                Destination           Protocol Info
+     10 94.251825   127.0.0.1             127.0.0.1             TCP      33327 > 1028 [FIN, ACK] Seq=7 Ack=32 Win=32832 Len=0 TSV=728337 TSER=717429
+
+Frame 10 (66 bytes on wire, 66 bytes captured)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+Internet Protocol, Src: 127.0.0.1 (127.0.0.1), Dst: 127.0.0.1 (127.0.0.1)
+Transmission Control Protocol, Src Port: 33327 (33327), Dst Port: 1028 (1028), Seq: 7, Ack: 32, Len: 0
+    Source port: 33327 (33327)
+    Destination port: 1028 (1028)
+    [Stream index: 0]
+    Sequence number: 7    (relative sequence number)
+    Acknowledgement number: 32    (relative ack number)
+    Header length: 32 bytes
+    Flags: 0x11 (FIN, ACK)
+    Window size: 32832 (scaled)
+    Checksum: 0x641a [validation disabled]
+    Options: (12 bytes)
+
+No.     Time        Source                Destination           Protocol Info
+     11 94.252981   127.0.0.1             127.0.0.1             TCP      1028 > 33327 [FIN, ACK] Seq=32 Ack=8 Win=32768 Len=0 TSV=728337 TSER=728337
+
+Frame 11 (66 bytes on wire, 66 bytes captured)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+Internet Protocol, Src: 127.0.0.1 (127.0.0.1), Dst: 127.0.0.1 (127.0.0.1)
+Transmission Control Protocol, Src Port: 1028 (1028), Dst Port: 33327 (33327), Seq: 32, Ack: 8, Len: 0
+    Source port: 1028 (1028)
+    Destination port: 33327 (33327)
+    [Stream index: 0]
+    Sequence number: 32    (relative sequence number)
+    Acknowledgement number: 8    (relative ack number)
+    Header length: 32 bytes
+    Flags: 0x11 (FIN, ACK)
+    Window size: 32768 (scaled)
+    Checksum: 0x397e [validation disabled]
+    Options: (12 bytes)
+    [SEQ/ACK analysis]
+
+No.     Time        Source                Destination           Protocol Info
+     12 94.253016   127.0.0.1             127.0.0.1             TCP      33327 > 1028 [ACK] Seq=8 Ack=33 Win=32832 Len=0 TSV=728337 TSER=728337
+
+Frame 12 (66 bytes on wire, 66 bytes captured)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+Internet Protocol, Src: 127.0.0.1 (127.0.0.1), Dst: 127.0.0.1 (127.0.0.1)
+Transmission Control Protocol, Src Port: 33327 (33327), Dst Port: 1028 (1028), Seq: 8, Ack: 33, Len: 0
+    Source port: 33327 (33327)
+    Destination port: 1028 (1028)
+    [Stream index: 0]
+    Sequence number: 8    (relative sequence number)
+    Acknowledgement number: 33    (relative ack number)
+    Header length: 32 bytes
+    Flags: 0x10 (ACK)
+    Window size: 32832 (scaled)
+    Checksum: 0x397d [validation disabled]
+    Options: (12 bytes)
+    [SEQ/ACK analysis]

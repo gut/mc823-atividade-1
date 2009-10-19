@@ -1,0 +1,26 @@
+tcp        0      0 0.0.0.0:1031            0.0.0.0:*               LISTEN      3664/servidor       
+tcp        0      0 127.0.0.1:38196         127.0.0.1:1031          ESTABLISHED 3671/cliente        
+tcp        0      1 127.0.0.1:38198         127.0.0.1:1031          ESTABLISHED 3673/cliente        
+tcp        0      1 127.0.0.1:38200         127.0.0.1:1031          SYN_SENT    3675/cliente        
+tcp        0      1 127.0.0.1:38199         127.0.0.1:1031          ESTABLISHED 3674/cliente        
+tcp        0      0 127.0.0.1:38192         127.0.0.1:1031          ESTABLISHED 3667/cliente        
+tcp        0      0 127.0.0.1:38194         127.0.0.1:1031          ESTABLISHED 3669/cliente        
+tcp        0      0 127.0.0.1:38195         127.0.0.1:1031          ESTABLISHED 3670/cliente        
+tcp        0      0 127.0.0.1:38191         127.0.0.1:1031          ESTABLISHED 3666/cliente        
+tcp        0      0 127.0.0.1:38193         127.0.0.1:1031          ESTABLISHED 3668/cliente        
+tcp        0      0 127.0.0.1:38197         127.0.0.1:1031          ESTABLISHED 3672/cliente        
+
+Numero de clientes simultaneos: 9
+tcp        0      0 0.0.0.0:1034            0.0.0.0:*               LISTEN      4354/servidor       
+tcp        0      0 127.0.0.1:47710         127.0.0.1:1034          ESTABLISHED 4357/cliente        
+tcp        0      1 127.0.0.1:47718         127.0.0.1:1034          SYN_SENT    4365/cliente        
+tcp        0      0 127.0.0.1:47713         127.0.0.1:1034          ESTABLISHED 4360/cliente        
+tcp        0      0 127.0.0.1:47709         127.0.0.1:1034          ESTABLISHED 4356/cliente        
+tcp        0      1 127.0.0.1:47717         127.0.0.1:1034          ESTABLISHED 4364/cliente        
+tcp        0      0 127.0.0.1:47714         127.0.0.1:1034          ESTABLISHED 4361/cliente        
+tcp        0      0 127.0.0.1:47712         127.0.0.1:1034          ESTABLISHED 4359/cliente        
+tcp        0      0 127.0.0.1:47715         127.0.0.1:1034          ESTABLISHED 4362/cliente        
+tcp        0      1 127.0.0.1:47716         127.0.0.1:1034          ESTABLISHED 4363/cliente        
+tcp        0      0 127.0.0.1:47711         127.0.0.1:1034          ESTABLISHED 4358/cliente        
+
+Numero de clientes simultaneos: 18
