@@ -17,6 +17,7 @@
 #ifndef NI_MAXSERV
 #define NI_MAXSERV 32
 #endif
+#define SLEEP_TIME 10
 
 #define LOG(fmt, rest...)                       \
     do {                                        \
@@ -43,7 +44,7 @@ main(int argc, char **argv)
     time_t thetime;
 
     if (argc != 3) {
-        snprintf(error, MAXLINE, "uso: %s <Port> <Backlog size>", argv[0]);
+        snprintf(error, MAXLINE, "uso: %s <Port> <Backlog size>\n", argv[0]);
         fprintf(stderr, error);
         exit(EXIT_FAILURE);
     }
@@ -180,6 +181,7 @@ process_request(int connfd, const char *host, const char *port)
             perror("pclose");
     }
     /* Filho encerra sua conexao */
+    sleep(SLEEP_TIME);
     close(connfd);
 }
 
