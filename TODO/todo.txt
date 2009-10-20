@@ -1,2 +1,1 @@
-@AT3 Relatar experimentos e resultados obtidos.
 @AT3 Gerar relatório com detalhes da implementações dos passos 1, 2 e 3 e respostas dos passos 4 e 8. # Gut
