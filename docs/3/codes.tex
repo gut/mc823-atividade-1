@@ -1,0 +1,51 @@
+\documentclass[pdftex, 10pt, a4paper]{article}
+
+\usepackage[pdftex]{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{color}
+\usepackage{listings}
+
+\lstset{ %
+    language=C,
+    basicstyle=\footnotesize,
+    numbers=left,
+    numberstyle=\footnotesize,
+    stepnumber=5,
+    numbersep=5pt,
+    backgroundcolor=\color{white},
+    showspaces=false,
+    showstringspaces=false,
+    frame=single,
+    tabsize=4,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    escapeinside={\%*}{*)}
+}
+
+\title{Códigos-fonte da atividade 3}
+\date{19 de outubro de 2009}
+\author{Gustavo Serra Scalet - RA 061358 \and Rafael Fonseca dos Santos - RA 072146}
+
+\begin{document}
+
+\maketitle
+
+\lstinputlisting[label=servidor, caption=Código comentado do
+    servidor]{../../src/servidor.c}
+
+\lstinputlisting[label=cliente, caption=Código comentado do
+    cliente]{../../src/cliente.c}
+
+\lstinputlisting[label=wrapper.h, caption=Funções "envelopadoras"
+    auxiliares (.h)]{../../src/wrapper.h}
+
+\lstinputlisting[label=wrapper, caption=Funções "envelopadoras"
+    auxiliares]{../../src/wrapper.c}
+
+\lstinputlisting[label=util.h, caption=Funções úteis (.h)]{../../src/util.h}
+
+\lstinputlisting[label=util, caption=Funções úteis]{../../src/util.c}
+
+\end{document}
