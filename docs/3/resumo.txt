@@ -1,19 +1,619 @@
-Conex~ao:
-cliente > servidor [SYN] Seq=0 Win=32792 Len=0 MSS=16396 
-servidor > cliente [SYN, ACK] Seq=0 Ack=1 Win=32768 Len=0 MSS=16396 
-cliente > servidor [ACK] Seq=1 Ack=1 Win=32832 Len=0 
+60079 > 1028 [SYN] Seq=0
+1028 > 60079 [SYN, ACK] Seq=0 Ack=1
+60079 > 1028 [ACK] Seq=1 Ack=1
+60079 > 1028 [PSH, ACK] Seq=1 Ack=1
+1028 > 60079 [ACK] Seq=1 Ack=2
+60080 > 1028 [SYN] Seq=0
+1028 > 60080 [SYN, ACK] Seq=0 Ack=1
+60080 > 1028 [ACK] Seq=1 Ack=1
+60080 > 1028 [PSH, ACK] Seq=1 Ack=1
+60081 > 1028 [SYN] Seq=0
+1028 > 60081 [SYN, ACK] Seq=0 Ack=1
+60081 > 1028 [ACK] Seq=1 Ack=1
+60081 > 1028 [PSH, ACK] Seq=1 Ack=1
+60082 > 1028 [SYN] Seq=0
+60083 > 1028 [SYN] Seq=0
+60084 > 1028 [SYN] Seq=0
+60085 > 1028 [SYN] Seq=0
+60086 > 1028 [SYN] Seq=0
+60087 > 1028 [SYN] Seq=0
+60088 > 1028 [SYN] Seq=0
+60079 > 1028 [FIN, ACK] Seq=2 Ack=1
+60080 > 1028 [FIN, ACK] Seq=2 Ack=1
+60081 > 1028 [FIN, ACK] Seq=2 Ack=1
+1028 > 60079 [RST, ACK] Seq=1 Ack=3
+[TCP Retransmission] 60080 > 1028 [PSH, ACK] Seq=1 Ack=1
+[TCP Retransmission] 60081 > 1028 [PSH, ACK] Seq=1 Ack=1
+1028 > 60080 [RST] Seq=1
+1028 > 60081 [RST] Seq=1
 
-Envio do "date":
-cliente > servidor [PSH, ACK] Seq=1 Ack=1 Win=32832 Len=6 
-servidor > cliente [ACK] Seq=1 Ack=7 Win=32768 Len=0 
+42093 > 1029 [SYN] Seq=0
+1029 > 42093 [SYN, ACK] Seq=0 Ack=1
+42093 > 1029 [ACK] Seq=1 Ack=1
+42093 > 1029 [PSH, ACK] Seq=1 Ack=1
+1029 > 42093 [ACK] Seq=1 Ack=2
+42094 > 1029 [SYN] Seq=0
+1029 > 42094 [SYN, ACK] Seq=0 Ack=1
+42094 > 1029 [ACK] Seq=1 Ack=1
+42094 > 1029 [PSH, ACK] Seq=1 Ack=1
+1029 > 42094 [ACK] Seq=1 Ack=2
+42095 > 1029 [SYN] Seq=0
+1029 > 42095 [SYN, ACK] Seq=0 Ack=1
+42095 > 1029 [ACK] Seq=1 Ack=1
+42095 > 1029 [PSH, ACK] Seq=1 Ack=1
+42096 > 1029 [SYN] Seq=0
+1029 > 42096 [SYN, ACK] Seq=0 Ack=1
+42096 > 1029 [ACK] Seq=1 Ack=1
+42096 > 1029 [PSH, ACK] Seq=1 Ack=1
+42097 > 1029 [SYN] Seq=0
+42098 > 1029 [SYN] Seq=0
+42099 > 1029 [SYN] Seq=0
+42100 > 1029 [SYN] Seq=0
+42101 > 1029 [SYN] Seq=0
+42102 > 1029 [SYN] Seq=0
+42093 > 1029 [FIN, ACK] Seq=2 Ack=1
+42094 > 1029 [FIN, ACK] Seq=2 Ack=1
+42095 > 1029 [FIN, ACK] Seq=2 Ack=1
+42096 > 1029 [FIN, ACK] Seq=2 Ack=1
+1029 > 42093 [RST, ACK] Seq=1 Ack=3
+1029 > 42094 [RST, ACK] Seq=1 Ack=3
+[TCP Retransmission] 42095 > 1029 [PSH, ACK] Seq=1 Ack=1
+1029 > 42095 [RST] Seq=1
+[TCP Retransmission] 42096 > 1029 [PSH, ACK] Seq=1 Ack=1
+1029 > 42096 [RST] Seq=1
 
-Resposta do servidor:
-servidor > cliente [PSH, ACK] Seq=1 Ack=7 Win=32768 Len=30 
-cliente > servidor [ACK] Seq=7 Ack=31 Win=32832 Len=0 
-servidor > cliente [PSH, ACK] Seq=31 Ack=7 Win=32768 Len=1 
-cliente > servidor [ACK] Seq=7 Ack=32 Win=32832 Len=0 
+34123 > 1030 [SYN] Seq=0
+1030 > 34123 [SYN, ACK] Seq=0 Ack=1
+34123 > 1030 [ACK] Seq=1 Ack=1
+34123 > 1030 [PSH, ACK] Seq=1 Ack=1
+1030 > 34123 [ACK] Seq=1 Ack=2
+34124 > 1030 [SYN] Seq=0
+1030 > 34124 [SYN, ACK] Seq=0 Ack=1
+34124 > 1030 [ACK] Seq=1 Ack=1
+34124 > 1030 [PSH, ACK] Seq=1 Ack=1
+1030 > 34124 [ACK] Seq=1 Ack=2
+34125 > 1030 [SYN] Seq=0
+1030 > 34125 [SYN, ACK] Seq=0 Ack=1
+34125 > 1030 [ACK] Seq=1 Ack=1
+34125 > 1030 [PSH, ACK] Seq=1 Ack=1
+1030 > 34125 [ACK] Seq=1 Ack=2
+34126 > 1030 [SYN] Seq=0
+1030 > 34126 [SYN, ACK] Seq=0 Ack=1
+34126 > 1030 [ACK] Seq=1 Ack=1
+34126 > 1030 [PSH, ACK] Seq=1 Ack=1
+34127 > 1030 [SYN] Seq=0
+1030 > 34127 [SYN, ACK] Seq=0 Ack=1
+34127 > 1030 [ACK] Seq=1 Ack=1
+34127 > 1030 [PSH, ACK] Seq=1 Ack=1
+34128 > 1030 [SYN] Seq=0
+34129 > 1030 [SYN] Seq=0
+34130 > 1030 [SYN] Seq=0
+34131 > 1030 [SYN] Seq=0
+34132 > 1030 [SYN] Seq=0
+34123 > 1030 [FIN, ACK] Seq=2 Ack=1
+34124 > 1030 [FIN, ACK] Seq=2 Ack=1
+34125 > 1030 [FIN, ACK] Seq=2 Ack=1
+34126 > 1030 [FIN, ACK] Seq=2 Ack=1
+1030 > 34123 [ACK] Seq=1 Ack=3
+34127 > 1030 [FIN, ACK] Seq=2 Ack=1
+1030 > 34123 [RST, ACK] Seq=1 Ack=3
+1030 > 34124 [RST, ACK] Seq=1 Ack=3
+1030 > 34125 [RST, ACK] Seq=1 Ack=3
+[TCP Retransmission] 34126 > 1030 [PSH, ACK] Seq=1 Ack=1
+[TCP Retransmission] 34127 > 1030 [PSH, ACK] Seq=1 Ack=1
+1030 > 34126 [RST] Seq=1
+1030 > 34127 [RST] Seq=1
 
-Requisiç~ao do cliente para desconex~ao:
-cliente > servidor [FIN, ACK] Seq=7 Ack=32 Win=32832 Len=0 
-servidor > cliente [FIN, ACK] Seq=32 Ack=8 Win=32768 Len=0 
-cliente > servidor [ACK] Seq=8 Ack=33 Win=32832 Len=0 
+37215 > 1031 [SYN] Seq=0
+1031 > 37215 [SYN, ACK] Seq=0 Ack=1
+37215 > 1031 [ACK] Seq=1 Ack=1
+37215 > 1031 [PSH, ACK] Seq=1 Ack=1
+1031 > 37215 [ACK] Seq=1 Ack=2
+37216 > 1031 [SYN] Seq=0
+1031 > 37216 [SYN, ACK] Seq=0 Ack=1
+37216 > 1031 [ACK] Seq=1 Ack=1
+37216 > 1031 [PSH, ACK] Seq=1 Ack=1
+1031 > 37216 [ACK] Seq=1 Ack=2
+37217 > 1031 [SYN] Seq=0
+1031 > 37217 [SYN, ACK] Seq=0 Ack=1
+37217 > 1031 [ACK] Seq=1 Ack=1
+37217 > 1031 [PSH, ACK] Seq=1 Ack=1
+1031 > 37217 [ACK] Seq=1 Ack=2
+37218 > 1031 [SYN] Seq=0
+1031 > 37218 [SYN, ACK] Seq=0 Ack=1
+37218 > 1031 [ACK] Seq=1 Ack=1
+37218 > 1031 [PSH, ACK] Seq=1 Ack=1
+1031 > 37218 [ACK] Seq=1 Ack=2
+37219 > 1031 [SYN] Seq=0
+1031 > 37219 [SYN, ACK] Seq=0 Ack=1
+37219 > 1031 [ACK] Seq=1 Ack=1
+37219 > 1031 [PSH, ACK] Seq=1 Ack=1
+37220 > 1031 [SYN] Seq=0
+1031 > 37220 [SYN, ACK] Seq=0 Ack=1
+37220 > 1031 [ACK] Seq=1 Ack=1
+37220 > 1031 [PSH, ACK] Seq=1 Ack=1
+37221 > 1031 [SYN] Seq=0
+37222 > 1031 [SYN] Seq=0
+37223 > 1031 [SYN] Seq=0
+37224 > 1031 [SYN] Seq=0
+37215 > 1031 [FIN, ACK] Seq=2 Ack=1
+37216 > 1031 [FIN, ACK] Seq=2 Ack=1
+37217 > 1031 [FIN, ACK] Seq=2 Ack=1
+37218 > 1031 [FIN, ACK] Seq=2 Ack=1
+37219 > 1031 [FIN, ACK] Seq=2 Ack=1
+37220 > 1031 [FIN, ACK] Seq=2 Ack=1
+1031 > 37215 [RST, ACK] Seq=1 Ack=3
+1031 > 37216 [RST, ACK] Seq=1 Ack=3
+1031 > 37217 [RST, ACK] Seq=1 Ack=3
+1031 > 37218 [RST, ACK] Seq=1 Ack=3
+[TCP Retransmission] 37219 > 1031 [PSH, ACK] Seq=1 Ack=1
+1031 > 37219 [RST] Seq=1
+[TCP Retransmission] 37220 > 1031 [PSH, ACK] Seq=1 Ack=1
+1031 > 37220 [RST] Seq=1
+
+36881 > 1032 [SYN] Seq=0
+1032 > 36881 [SYN, ACK] Seq=0 Ack=1
+36881 > 1032 [ACK] Seq=1 Ack=1
+36881 > 1032 [PSH, ACK] Seq=1 Ack=1
+1032 > 36881 [ACK] Seq=1 Ack=2
+36882 > 1032 [SYN] Seq=0
+1032 > 36882 [SYN, ACK] Seq=0 Ack=1
+36882 > 1032 [ACK] Seq=1 Ack=1
+36882 > 1032 [PSH, ACK] Seq=1 Ack=1
+1032 > 36882 [ACK] Seq=1 Ack=2
+36883 > 1032 [SYN] Seq=0
+1032 > 36883 [SYN, ACK] Seq=0 Ack=1
+36883 > 1032 [ACK] Seq=1 Ack=1
+36883 > 1032 [PSH, ACK] Seq=1 Ack=1
+1032 > 36883 [ACK] Seq=1 Ack=2
+36884 > 1032 [SYN] Seq=0
+1032 > 36884 [SYN, ACK] Seq=0 Ack=1
+36884 > 1032 [ACK] Seq=1 Ack=1
+36884 > 1032 [PSH, ACK] Seq=1 Ack=1
+1032 > 36884 [ACK] Seq=1 Ack=2
+36885 > 1032 [SYN] Seq=0
+1032 > 36885 [SYN, ACK] Seq=0 Ack=1
+36885 > 1032 [ACK] Seq=1 Ack=1
+36885 > 1032 [PSH, ACK] Seq=1 Ack=1
+1032 > 36885 [ACK] Seq=1 Ack=2
+36886 > 1032 [SYN] Seq=0
+1032 > 36886 [SYN, ACK] Seq=0 Ack=1
+36886 > 1032 [ACK] Seq=1 Ack=1
+36886 > 1032 [PSH, ACK] Seq=1 Ack=1
+36887 > 1032 [SYN] Seq=0
+1032 > 36887 [SYN, ACK] Seq=0 Ack=1
+36887 > 1032 [ACK] Seq=1 Ack=1
+36887 > 1032 [PSH, ACK] Seq=1 Ack=1
+36888 > 1032 [SYN] Seq=0
+36889 > 1032 [SYN] Seq=0
+36890 > 1032 [SYN] Seq=0
+36881 > 1032 [FIN, ACK] Seq=2 Ack=1
+36882 > 1032 [FIN, ACK] Seq=2 Ack=1
+36883 > 1032 [FIN, ACK] Seq=2 Ack=1
+36884 > 1032 [FIN, ACK] Seq=2 Ack=1
+36885 > 1032 [FIN, ACK] Seq=2 Ack=1
+36886 > 1032 [FIN, ACK] Seq=2 Ack=1
+36887 > 1032 [FIN, ACK] Seq=2 Ack=1
+1032 > 36881 [ACK] Seq=1 Ack=3
+1032 > 36882 [ACK] Seq=1 Ack=3
+1032 > 36883 [ACK] Seq=1 Ack=3
+1032 > 36884 [ACK] Seq=1 Ack=3
+1032 > 36885 [ACK] Seq=1 Ack=3
+1032 > 36881 [RST, ACK] Seq=1 Ack=3
+1032 > 36882 [RST, ACK] Seq=1 Ack=3
+1032 > 36883 [RST, ACK] Seq=1 Ack=3
+1032 > 36884 [RST, ACK] Seq=1 Ack=3
+1032 > 36885 [RST, ACK] Seq=1 Ack=3
+[TCP Retransmission] 36886 > 1032 [PSH, ACK] Seq=1 Ack=1
+[TCP Retransmission] 36887 > 1032 [PSH, ACK] Seq=1 Ack=1
+1032 > 36886 [RST] Seq=1
+1032 > 36887 [RST] Seq=1
+
+42029 > 1033 [SYN] Seq=0
+1033 > 42029 [SYN, ACK] Seq=0 Ack=1
+42029 > 1033 [ACK] Seq=1 Ack=1
+42029 > 1033 [PSH, ACK] Seq=1 Ack=1
+1033 > 42029 [ACK] Seq=1 Ack=2
+42030 > 1033 [SYN] Seq=0
+1033 > 42030 [SYN, ACK] Seq=0 Ack=1
+42030 > 1033 [ACK] Seq=1 Ack=1
+42030 > 1033 [PSH, ACK] Seq=1 Ack=1
+1033 > 42030 [ACK] Seq=1 Ack=2
+42031 > 1033 [SYN] Seq=0
+1033 > 42031 [SYN, ACK] Seq=0 Ack=1
+42031 > 1033 [ACK] Seq=1 Ack=1
+42031 > 1033 [PSH, ACK] Seq=1 Ack=1
+1033 > 42031 [ACK] Seq=1 Ack=2
+42032 > 1033 [SYN] Seq=0
+1033 > 42032 [SYN, ACK] Seq=0 Ack=1
+42032 > 1033 [ACK] Seq=1 Ack=1
+42032 > 1033 [PSH, ACK] Seq=1 Ack=1
+1033 > 42032 [ACK] Seq=1 Ack=2
+42033 > 1033 [SYN] Seq=0
+1033 > 42033 [SYN, ACK] Seq=0 Ack=1
+42033 > 1033 [ACK] Seq=1 Ack=1
+42033 > 1033 [PSH, ACK] Seq=1 Ack=1
+1033 > 42033 [ACK] Seq=1 Ack=2
+42034 > 1033 [SYN] Seq=0
+1033 > 42034 [SYN, ACK] Seq=0 Ack=1
+42034 > 1033 [ACK] Seq=1 Ack=1
+42034 > 1033 [PSH, ACK] Seq=1 Ack=1
+1033 > 42034 [ACK] Seq=1 Ack=2
+42035 > 1033 [SYN] Seq=0
+1033 > 42035 [SYN, ACK] Seq=0 Ack=1
+42035 > 1033 [ACK] Seq=1 Ack=1
+42035 > 1033 [PSH, ACK] Seq=1 Ack=1
+42036 > 1033 [SYN] Seq=0
+1033 > 42036 [SYN, ACK] Seq=0 Ack=1
+42036 > 1033 [ACK] Seq=1 Ack=1
+42036 > 1033 [PSH, ACK] Seq=1 Ack=1
+42037 > 1033 [SYN] Seq=0
+42038 > 1033 [SYN] Seq=0
+42029 > 1033 [FIN, ACK] Seq=2 Ack=1
+42030 > 1033 [FIN, ACK] Seq=2 Ack=1
+42031 > 1033 [FIN, ACK] Seq=2 Ack=1
+42032 > 1033 [FIN, ACK] Seq=2 Ack=1
+42033 > 1033 [FIN, ACK] Seq=2 Ack=1
+42034 > 1033 [FIN, ACK] Seq=2 Ack=1
+42035 > 1033 [FIN, ACK] Seq=2 Ack=1
+42036 > 1033 [FIN, ACK] Seq=2 Ack=1
+1033 > 42029 [RST, ACK] Seq=1 Ack=3
+1033 > 42030 [RST, ACK] Seq=1 Ack=3
+1033 > 42031 [RST, ACK] Seq=1 Ack=3
+1033 > 42032 [RST, ACK] Seq=1 Ack=3
+1033 > 42033 [RST, ACK] Seq=1 Ack=3
+1033 > 42034 [RST, ACK] Seq=1 Ack=3
+[TCP Retransmission] 42035 > 1033 [PSH, ACK] Seq=1 Ack=1
+[TCP Retransmission] 42036 > 1033 [PSH, ACK] Seq=1 Ack=1
+1033 > 42035 [RST] Seq=1
+1033 > 42036 [RST] Seq=1
+
+47709 > 1034 [SYN] Seq=0
+1034 > 47709 [SYN, ACK] Seq=0 Ack=1
+47709 > 1034 [ACK] Seq=1 Ack=1
+47709 > 1034 [PSH, ACK] Seq=1 Ack=1
+1034 > 47709 [ACK] Seq=1 Ack=2
+47710 > 1034 [SYN] Seq=0
+1034 > 47710 [SYN, ACK] Seq=0 Ack=1
+47710 > 1034 [ACK] Seq=1 Ack=1
+47710 > 1034 [PSH, ACK] Seq=1 Ack=1
+1034 > 47710 [ACK] Seq=1 Ack=2
+47711 > 1034 [SYN] Seq=0
+1034 > 47711 [SYN, ACK] Seq=0 Ack=1
+47711 > 1034 [ACK] Seq=1 Ack=1
+47711 > 1034 [PSH, ACK] Seq=1 Ack=1
+1034 > 47711 [ACK] Seq=1 Ack=2
+47712 > 1034 [SYN] Seq=0
+1034 > 47712 [SYN, ACK] Seq=0 Ack=1
+47712 > 1034 [ACK] Seq=1 Ack=1
+47712 > 1034 [PSH, ACK] Seq=1 Ack=1
+1034 > 47712 [ACK] Seq=1 Ack=2
+47713 > 1034 [SYN] Seq=0
+1034 > 47713 [SYN, ACK] Seq=0 Ack=1
+47713 > 1034 [ACK] Seq=1 Ack=1
+47713 > 1034 [PSH, ACK] Seq=1 Ack=1
+1034 > 47713 [ACK] Seq=1 Ack=2
+47714 > 1034 [SYN] Seq=0
+1034 > 47714 [SYN, ACK] Seq=0 Ack=1
+47714 > 1034 [ACK] Seq=1 Ack=1
+47714 > 1034 [PSH, ACK] Seq=1 Ack=1
+1034 > 47714 [ACK] Seq=1 Ack=2
+47715 > 1034 [SYN] Seq=0
+1034 > 47715 [SYN, ACK] Seq=0 Ack=1
+47715 > 1034 [ACK] Seq=1 Ack=1
+47715 > 1034 [PSH, ACK] Seq=1 Ack=1
+1034 > 47715 [ACK] Seq=1 Ack=2
+47716 > 1034 [SYN] Seq=0
+1034 > 47716 [SYN, ACK] Seq=0 Ack=1
+47716 > 1034 [ACK] Seq=1 Ack=1
+47716 > 1034 [PSH, ACK] Seq=1 Ack=1
+47717 > 1034 [SYN] Seq=0
+1034 > 47717 [SYN, ACK] Seq=0 Ack=1
+47717 > 1034 [ACK] Seq=1 Ack=1
+47717 > 1034 [PSH, ACK] Seq=1 Ack=1
+47718 > 1034 [SYN] Seq=0
+47709 > 1034 [FIN, ACK] Seq=2 Ack=1
+47710 > 1034 [FIN, ACK] Seq=2 Ack=1
+47711 > 1034 [FIN, ACK] Seq=2 Ack=1
+47712 > 1034 [FIN, ACK] Seq=2 Ack=1
+47713 > 1034 [FIN, ACK] Seq=2 Ack=1
+47714 > 1034 [FIN, ACK] Seq=2 Ack=1
+47715 > 1034 [FIN, ACK] Seq=2 Ack=1
+47716 > 1034 [FIN, ACK] Seq=2 Ack=1
+47717 > 1034 [FIN, ACK] Seq=2 Ack=1
+1034 > 47709 [RST, ACK] Seq=1 Ack=3
+1034 > 47710 [RST, ACK] Seq=1 Ack=3
+1034 > 47711 [RST, ACK] Seq=1 Ack=3
+1034 > 47712 [RST, ACK] Seq=1 Ack=3
+1034 > 47713 [RST, ACK] Seq=1 Ack=3
+1034 > 47714 [RST, ACK] Seq=1 Ack=3
+1034 > 47715 [RST, ACK] Seq=1 Ack=3
+[TCP Retransmission] 47716 > 1034 [PSH, ACK] Seq=1 Ack=1
+[TCP Retransmission] 47717 > 1034 [PSH, ACK] Seq=1 Ack=1
+1034 > 47716 [RST] Seq=1
+1034 > 47717 [RST] Seq=1
+
+47539 > 1035 [SYN] Seq=0
+1035 > 47539 [SYN, ACK] Seq=0 Ack=1
+47539 > 1035 [ACK] Seq=1 Ack=1
+47539 > 1035 [PSH, ACK] Seq=1 Ack=1
+1035 > 47539 [ACK] Seq=1 Ack=2
+47540 > 1035 [SYN] Seq=0
+1035 > 47540 [SYN, ACK] Seq=0 Ack=1
+47540 > 1035 [ACK] Seq=1 Ack=1
+47540 > 1035 [PSH, ACK] Seq=1 Ack=1
+1035 > 47540 [ACK] Seq=1 Ack=2
+47541 > 1035 [SYN] Seq=0
+1035 > 47541 [SYN, ACK] Seq=0 Ack=1
+47541 > 1035 [ACK] Seq=1 Ack=1
+47541 > 1035 [PSH, ACK] Seq=1 Ack=1
+1035 > 47541 [ACK] Seq=1 Ack=2
+47542 > 1035 [SYN] Seq=0
+1035 > 47542 [SYN, ACK] Seq=0 Ack=1
+47542 > 1035 [ACK] Seq=1 Ack=1
+47542 > 1035 [PSH, ACK] Seq=1 Ack=1
+1035 > 47542 [ACK] Seq=1 Ack=2
+47543 > 1035 [SYN] Seq=0
+1035 > 47543 [SYN, ACK] Seq=0 Ack=1
+47543 > 1035 [ACK] Seq=1 Ack=1
+47543 > 1035 [PSH, ACK] Seq=1 Ack=1
+1035 > 47543 [ACK] Seq=1 Ack=2
+47544 > 1035 [SYN] Seq=0
+1035 > 47544 [SYN, ACK] Seq=0 Ack=1
+47544 > 1035 [ACK] Seq=1 Ack=1
+47544 > 1035 [PSH, ACK] Seq=1 Ack=1
+1035 > 47544 [ACK] Seq=1 Ack=2
+47545 > 1035 [SYN] Seq=0
+1035 > 47545 [SYN, ACK] Seq=0 Ack=1
+47545 > 1035 [ACK] Seq=1 Ack=1
+47545 > 1035 [PSH, ACK] Seq=1 Ack=1
+1035 > 47545 [ACK] Seq=1 Ack=2
+47546 > 1035 [SYN] Seq=0
+1035 > 47546 [SYN, ACK] Seq=0 Ack=1
+47546 > 1035 [ACK] Seq=1 Ack=1
+47546 > 1035 [PSH, ACK] Seq=1 Ack=1
+1035 > 47546 [ACK] Seq=1 Ack=2
+47547 > 1035 [SYN] Seq=0
+1035 > 47547 [SYN, ACK] Seq=0 Ack=1
+47547 > 1035 [ACK] Seq=1 Ack=1
+47547 > 1035 [PSH, ACK] Seq=1 Ack=1
+47548 > 1035 [SYN] Seq=0
+1035 > 47548 [SYN, ACK] Seq=0 Ack=1
+47548 > 1035 [ACK] Seq=1 Ack=1
+47548 > 1035 [PSH, ACK] Seq=1 Ack=1
+47539 > 1035 [FIN, ACK] Seq=2 Ack=1
+47540 > 1035 [FIN, ACK] Seq=2 Ack=1
+47541 > 1035 [FIN, ACK] Seq=2 Ack=1
+47542 > 1035 [FIN, ACK] Seq=2 Ack=1
+47543 > 1035 [FIN, ACK] Seq=2 Ack=1
+47544 > 1035 [FIN, ACK] Seq=2 Ack=1
+47545 > 1035 [FIN, ACK] Seq=2 Ack=1
+47546 > 1035 [FIN, ACK] Seq=2 Ack=1
+47547 > 1035 [FIN, ACK] Seq=2 Ack=1
+47548 > 1035 [FIN, ACK] Seq=2 Ack=1
+1035 > 47539 [RST, ACK] Seq=1 Ack=3
+1035 > 47540 [RST, ACK] Seq=1 Ack=3
+1035 > 47541 [RST, ACK] Seq=1 Ack=3
+1035 > 47542 [RST, ACK] Seq=1 Ack=3
+1035 > 47543 [RST, ACK] Seq=1 Ack=3
+1035 > 47544 [RST, ACK] Seq=1 Ack=3
+1035 > 47545 [RST, ACK] Seq=1 Ack=3
+1035 > 47546 [RST, ACK] Seq=1 Ack=3
+[TCP Retransmission] 47547 > 1035 [PSH, ACK] Seq=1 Ack=1
+1035 > 47547 [RST] Seq=1
+[TCP Retransmission] 47548 > 1035 [PSH, ACK] Seq=1 Ack=1
+1035 > 47548 [RST] Seq=1
+
+38582 > 1036 [SYN] Seq=0
+1036 > 38582 [SYN, ACK] Seq=0 Ack=1
+38582 > 1036 [ACK] Seq=1 Ack=1
+38582 > 1036 [PSH, ACK] Seq=1 Ack=1
+1036 > 38582 [ACK] Seq=1 Ack=2
+38583 > 1036 [SYN] Seq=0
+1036 > 38583 [SYN, ACK] Seq=0 Ack=1
+38583 > 1036 [ACK] Seq=1 Ack=1
+38583 > 1036 [PSH, ACK] Seq=1 Ack=1
+1036 > 38583 [ACK] Seq=1 Ack=2
+38584 > 1036 [SYN] Seq=0
+1036 > 38584 [SYN, ACK] Seq=0 Ack=1
+38584 > 1036 [ACK] Seq=1 Ack=1
+38584 > 1036 [PSH, ACK] Seq=1 Ack=1
+1036 > 38584 [ACK] Seq=1 Ack=2
+38585 > 1036 [SYN] Seq=0
+1036 > 38585 [SYN, ACK] Seq=0 Ack=1
+38585 > 1036 [ACK] Seq=1 Ack=1
+38585 > 1036 [PSH, ACK] Seq=1 Ack=1
+1036 > 38585 [ACK] Seq=1 Ack=2
+38586 > 1036 [SYN] Seq=0
+1036 > 38586 [SYN, ACK] Seq=0 Ack=1
+38586 > 1036 [ACK] Seq=1 Ack=1
+38586 > 1036 [PSH, ACK] Seq=1 Ack=1
+1036 > 38586 [ACK] Seq=1 Ack=2
+38587 > 1036 [SYN] Seq=0
+1036 > 38587 [SYN, ACK] Seq=0 Ack=1
+38587 > 1036 [ACK] Seq=1 Ack=1
+38587 > 1036 [PSH, ACK] Seq=1 Ack=1
+1036 > 38587 [ACK] Seq=1 Ack=2
+38588 > 1036 [SYN] Seq=0
+1036 > 38588 [SYN, ACK] Seq=0 Ack=1
+38588 > 1036 [ACK] Seq=1 Ack=1
+38588 > 1036 [PSH, ACK] Seq=1 Ack=1
+1036 > 38588 [ACK] Seq=1 Ack=2
+38589 > 1036 [SYN] Seq=0
+1036 > 38589 [SYN, ACK] Seq=0 Ack=1
+38589 > 1036 [ACK] Seq=1 Ack=1
+38589 > 1036 [PSH, ACK] Seq=1 Ack=1
+1036 > 38589 [ACK] Seq=1 Ack=2
+38590 > 1036 [SYN] Seq=0
+1036 > 38590 [SYN, ACK] Seq=0 Ack=1
+38590 > 1036 [ACK] Seq=1 Ack=1
+38590 > 1036 [PSH, ACK] Seq=1 Ack=1
+1036 > 38590 [ACK] Seq=1 Ack=2
+38591 > 1036 [SYN] Seq=0
+1036 > 38591 [SYN, ACK] Seq=0 Ack=1
+38591 > 1036 [ACK] Seq=1 Ack=1
+38591 > 1036 [PSH, ACK] Seq=1 Ack=1
+38582 > 1036 [FIN, ACK] Seq=2 Ack=1
+38583 > 1036 [FIN, ACK] Seq=2 Ack=1
+38584 > 1036 [FIN, ACK] Seq=2 Ack=1
+38585 > 1036 [FIN, ACK] Seq=2 Ack=1
+38586 > 1036 [FIN, ACK] Seq=2 Ack=1
+38587 > 1036 [FIN, ACK] Seq=2 Ack=1
+38588 > 1036 [FIN, ACK] Seq=2 Ack=1
+38589 > 1036 [FIN, ACK] Seq=2 Ack=1
+38590 > 1036 [FIN, ACK] Seq=2 Ack=1
+38591 > 1036 [FIN, ACK] Seq=2 Ack=1
+1036 > 38582 [RST, ACK] Seq=1 Ack=3
+1036 > 38583 [RST, ACK] Seq=1 Ack=3
+1036 > 38584 [RST, ACK] Seq=1 Ack=3
+1036 > 38585 [RST, ACK] Seq=1 Ack=3
+1036 > 38586 [RST, ACK] Seq=1 Ack=3
+1036 > 38587 [RST, ACK] Seq=1 Ack=3
+1036 > 38588 [RST, ACK] Seq=1 Ack=3
+1036 > 38589 [RST, ACK] Seq=1 Ack=3
+1036 > 38590 [RST, ACK] Seq=1 Ack=3
+[TCP Retransmission] 38591 > 1036 [PSH, ACK] Seq=1 Ack=1
+1036 > 38591 [RST] Seq=1
+
+40134 > 1037 [SYN] Seq=0
+1037 > 40134 [SYN, ACK] Seq=0 Ack=1
+40134 > 1037 [ACK] Seq=1 Ack=1
+40134 > 1037 [PSH, ACK] Seq=1 Ack=1
+1037 > 40134 [ACK] Seq=1 Ack=2
+40135 > 1037 [SYN] Seq=0
+1037 > 40135 [SYN, ACK] Seq=0 Ack=1
+40135 > 1037 [ACK] Seq=1 Ack=1
+40135 > 1037 [PSH, ACK] Seq=1 Ack=1
+1037 > 40135 [ACK] Seq=1 Ack=2
+40136 > 1037 [SYN] Seq=0
+1037 > 40136 [SYN, ACK] Seq=0 Ack=1
+40136 > 1037 [ACK] Seq=1 Ack=1
+40136 > 1037 [PSH, ACK] Seq=1 Ack=1
+1037 > 40136 [ACK] Seq=1 Ack=2
+40137 > 1037 [SYN] Seq=0
+1037 > 40137 [SYN, ACK] Seq=0 Ack=1
+40137 > 1037 [ACK] Seq=1 Ack=1
+40137 > 1037 [PSH, ACK] Seq=1 Ack=1
+1037 > 40137 [ACK] Seq=1 Ack=2
+40138 > 1037 [SYN] Seq=0
+1037 > 40138 [SYN, ACK] Seq=0 Ack=1
+40138 > 1037 [ACK] Seq=1 Ack=1
+40138 > 1037 [PSH, ACK] Seq=1 Ack=1
+1037 > 40138 [ACK] Seq=1 Ack=2
+40139 > 1037 [SYN] Seq=0
+1037 > 40139 [SYN, ACK] Seq=0 Ack=1
+40139 > 1037 [ACK] Seq=1 Ack=1
+40139 > 1037 [PSH, ACK] Seq=1 Ack=1
+1037 > 40139 [ACK] Seq=1 Ack=2
+40140 > 1037 [SYN] Seq=0
+1037 > 40140 [SYN, ACK] Seq=0 Ack=1
+40140 > 1037 [ACK] Seq=1 Ack=1
+40140 > 1037 [PSH, ACK] Seq=1 Ack=1
+1037 > 40140 [ACK] Seq=1 Ack=2
+40141 > 1037 [SYN] Seq=0
+1037 > 40141 [SYN, ACK] Seq=0 Ack=1
+40141 > 1037 [ACK] Seq=1 Ack=1
+40141 > 1037 [PSH, ACK] Seq=1 Ack=1
+1037 > 40141 [ACK] Seq=1 Ack=2
+40142 > 1037 [SYN] Seq=0
+1037 > 40142 [SYN, ACK] Seq=0 Ack=1
+40142 > 1037 [ACK] Seq=1 Ack=1
+40142 > 1037 [PSH, ACK] Seq=1 Ack=1
+1037 > 40142 [ACK] Seq=1 Ack=2
+40143 > 1037 [SYN] Seq=0
+1037 > 40143 [SYN, ACK] Seq=0 Ack=1
+40143 > 1037 [ACK] Seq=1 Ack=1
+40143 > 1037 [PSH, ACK] Seq=1 Ack=1
+1037 > 40143 [ACK] Seq=1 Ack=2
+40134 > 1037 [FIN, ACK] Seq=2 Ack=1
+40135 > 1037 [FIN, ACK] Seq=2 Ack=1
+40136 > 1037 [FIN, ACK] Seq=2 Ack=1
+40137 > 1037 [FIN, ACK] Seq=2 Ack=1
+40138 > 1037 [FIN, ACK] Seq=2 Ack=1
+40139 > 1037 [FIN, ACK] Seq=2 Ack=1
+40140 > 1037 [FIN, ACK] Seq=2 Ack=1
+40141 > 1037 [FIN, ACK] Seq=2 Ack=1
+40142 > 1037 [FIN, ACK] Seq=2 Ack=1
+40143 > 1037 [FIN, ACK] Seq=2 Ack=1
+1037 > 40134 [RST, ACK] Seq=1 Ack=3
+1037 > 40135 [RST, ACK] Seq=1 Ack=3
+1037 > 40136 [RST, ACK] Seq=1 Ack=3
+1037 > 40137 [RST, ACK] Seq=1 Ack=3
+1037 > 40138 [RST, ACK] Seq=1 Ack=3
+1037 > 40139 [RST, ACK] Seq=1 Ack=3
+1037 > 40140 [RST, ACK] Seq=1 Ack=3
+1037 > 40141 [RST, ACK] Seq=1 Ack=3
+1037 > 40142 [RST, ACK] Seq=1 Ack=3
+1037 > 40143 [RST, ACK] Seq=1 Ack=3
+
+49529 > 1038 [SYN] Seq=0
+1038 > 49529 [SYN, ACK] Seq=0 Ack=1
+49529 > 1038 [ACK] Seq=1 Ack=1
+49529 > 1038 [PSH, ACK] Seq=1 Ack=1
+1038 > 49529 [ACK] Seq=1 Ack=2
+49530 > 1038 [SYN] Seq=0
+1038 > 49530 [SYN, ACK] Seq=0 Ack=1
+49530 > 1038 [ACK] Seq=1 Ack=1
+49530 > 1038 [PSH, ACK] Seq=1 Ack=1
+1038 > 49530 [ACK] Seq=1 Ack=2
+49531 > 1038 [SYN] Seq=0
+1038 > 49531 [SYN, ACK] Seq=0 Ack=1
+49531 > 1038 [ACK] Seq=1 Ack=1
+49531 > 1038 [PSH, ACK] Seq=1 Ack=1
+1038 > 49531 [ACK] Seq=1 Ack=2
+49532 > 1038 [SYN] Seq=0
+1038 > 49532 [SYN, ACK] Seq=0 Ack=1
+49532 > 1038 [ACK] Seq=1 Ack=1
+49532 > 1038 [PSH, ACK] Seq=1 Ack=1
+1038 > 49532 [ACK] Seq=1 Ack=2
+49533 > 1038 [SYN] Seq=0
+1038 > 49533 [SYN, ACK] Seq=0 Ack=1
+49533 > 1038 [ACK] Seq=1 Ack=1
+49533 > 1038 [PSH, ACK] Seq=1 Ack=1
+1038 > 49533 [ACK] Seq=1 Ack=2
+49534 > 1038 [SYN] Seq=0
+1038 > 49534 [SYN, ACK] Seq=0 Ack=1
+49534 > 1038 [ACK] Seq=1 Ack=1
+49534 > 1038 [PSH, ACK] Seq=1 Ack=1
+1038 > 49534 [ACK] Seq=1 Ack=2
+49535 > 1038 [SYN] Seq=0
+1038 > 49535 [SYN, ACK] Seq=0 Ack=1
+49535 > 1038 [ACK] Seq=1 Ack=1
+49535 > 1038 [PSH, ACK] Seq=1 Ack=1
+1038 > 49535 [ACK] Seq=1 Ack=2
+49536 > 1038 [SYN] Seq=0
+1038 > 49536 [SYN, ACK] Seq=0 Ack=1
+49536 > 1038 [ACK] Seq=1 Ack=1
+49536 > 1038 [PSH, ACK] Seq=1 Ack=1
+1038 > 49536 [ACK] Seq=1 Ack=2
+49537 > 1038 [SYN] Seq=0
+1038 > 49537 [SYN, ACK] Seq=0 Ack=1
+49537 > 1038 [ACK] Seq=1 Ack=1
+49537 > 1038 [PSH, ACK] Seq=1 Ack=1
+1038 > 49537 [ACK] Seq=1 Ack=2
+49538 > 1038 [SYN] Seq=0
+1038 > 49538 [SYN, ACK] Seq=0 Ack=1
+49538 > 1038 [ACK] Seq=1 Ack=1
+49538 > 1038 [PSH, ACK] Seq=1 Ack=1
+1038 > 49538 [ACK] Seq=1 Ack=2
+49529 > 1038 [FIN, ACK] Seq=2 Ack=1
+49530 > 1038 [FIN, ACK] Seq=2 Ack=1
+49531 > 1038 [FIN, ACK] Seq=2 Ack=1
+49532 > 1038 [FIN, ACK] Seq=2 Ack=1
+49533 > 1038 [FIN, ACK] Seq=2 Ack=1
+49534 > 1038 [FIN, ACK] Seq=2 Ack=1
+49535 > 1038 [FIN, ACK] Seq=2 Ack=1
+49536 > 1038 [FIN, ACK] Seq=2 Ack=1
+49537 > 1038 [FIN, ACK] Seq=2 Ack=1
+49538 > 1038 [FIN, ACK] Seq=2 Ack=1
+1038 > 49529 [ACK] Seq=1 Ack=3
+1038 > 49529 [RST, ACK] Seq=1 Ack=3
+1038 > 49530 [RST, ACK] Seq=1 Ack=3
+1038 > 49531 [RST, ACK] Seq=1 Ack=3
+1038 > 49532 [RST, ACK] Seq=1 Ack=3
+1038 > 49533 [RST, ACK] Seq=1 Ack=3
+1038 > 49534 [RST, ACK] Seq=1 Ack=3
+1038 > 49535 [RST, ACK] Seq=1 Ack=3
+1038 > 49536 [RST, ACK] Seq=1 Ack=3
+1038 > 49537 [RST, ACK] Seq=1 Ack=3
+1038 > 49538 [RST, ACK] Seq=1 Ack=3
