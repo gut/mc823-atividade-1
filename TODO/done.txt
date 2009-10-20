@@ -6,3 +6,4 @@ x 2009-10-19 @AT3 Modificar servidor para retardar remoção de sockets da fila.
 x 2009-10-19 @AT3 Utilizar netstat para descobrir numero clientes que realizam 3WHS de imediato (contar linhas que tenham estado que comprove conexão # netstat chamado dentro do script clientsimul.sh
 x 2009-10-19 @AT3 Escrever scripts para executar várias instâncias de cliente em pqno intervalo de tempo ou usar cssh. # Veja clientesimul.sh
 x 2009-10-19 @AT3 Usar sniffer para descobrir flags nos segmentos TCP do cliente enqto este não consegue conectar-se ao servidor # Gut
+x 2009-10-19 @AT3 Realizar experimentos para descobrir quantos clientes (de 10) conseguem se conectar de imediato # Rafael
