@@ -44,13 +44,20 @@ main(int argc, char **argv)
     socklen_t len;
     time_t thetime;
 
+    /*
+     * ## Modificado da atividade anterior ##
+     * Recebemos o tamanho do backlog pela linha de comando tb.
+     */
     if (argc != 3) {
         snprintf(error, MAXLINE, "uso: %s <Port> <Backlog size>\n", argv[0]);
         fprintf(stderr, error);
         exit(EXIT_FAILURE);
     }
 
-    /* Define o tamanho do backlog a ser usado no Listen */
+    /*
+     * ## Modificado da atividade anterior ##
+     * Define o tamanho do backlog a ser usado no Listen
+     */
     char *ptr = NULL;
     errno = 0;
     listenq = (int)strtol(argv[2], &ptr, 10);
@@ -83,7 +90,11 @@ main(int argc, char **argv)
     /* Deixa esse socket preparado para aceitar pedidos de conexao */
     Listen(listenfd, listenq);
 
-    /* Funcao para lidar com filhos-zumbi */
+    /*
+     * ## Modificado da atividade anterior ##
+     * Funcao para lidar corretamente com processos-filho para
+     * que nao se tornem processos-zumbi
+     */
     signal(SIGCHLD, sigchld_handler);
 
     /* Testando se eh possivel abrir arquivo de log */
@@ -93,7 +104,13 @@ main(int argc, char **argv)
                 " Nenhuma informacao serah logada.\n");
     fclose(log);
 
+    /*
+     * ## Modificado da atividade anterior ##
+     * Aguarda um determinado tempo para que se forme uma fila de conexoes
+     * pendentes. O backlog definirah quais delas serao completadas
+     */
     sleep(SLEEP_TIME);
+
     /*
      * main loop: espere por um pedido de conexao, devolva saida do
      * comando enviado pelo cliente e feche a conexao
@@ -103,7 +120,11 @@ main(int argc, char **argv)
         len = sizeof(clientaddr);
         connfd = accept(listenfd, (struct sockaddr *)&clientaddr, &len);
         if (connfd < 0) {
-            /* Algum sinal chegou no meio do accept. Ignore */
+
+            /*
+             * ## Modificado da atividade anterior ##
+             * Algum sinal chegou no meio do accept. Ignore
+             */
             if (errno == EINTR)
                 continue;
             else
@@ -179,15 +200,19 @@ process_request(int connfd, const char *host, const char *port)
         if (len != 1)
             perror("write");
 
-        if (pclose(pipe) < 0 && errno != ECHILD)
             perror("pclose");
     }
     /* Filho encerra sua conexao */
     close(connfd);
 }
 
-
+/*
+ * ## Modificado da atividade anterior ##
+ * Handler responsavel por finalizar corretamente
+ * os servidores-filhos
+ */
 static void sigchld_handler(int signal)
 {
+    /* Espera todos os filhos terminarem, sem bloquear */
     while (waitpid(-1, NULL, WNOHANG) > 0);
 }

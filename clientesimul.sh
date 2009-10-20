@@ -15,17 +15,19 @@ for i in `seq 0 10`; do
     # Salva estado das conexoes num arquivo
     netstat -t -a -n -p 2>/dev/null | egrep 'servidor|cliente' &>>backlog$i.txt
     echo >>backlog$i.txt
+    # Salva numero de conexoes completadas no fim do arquivo
     clinum=`cat backlog$i.txt | egrep 'ESTABLISHED.*cliente' | wc -l`
     echo "Numero de clientes simultaneos: $clinum" >>backlog$i.txt
 
-    echo "Output from netstat saved to backlog$i.txt"
+    echo "Saida do netstat salva em backlog$i.txt"
 
-    # Mata os processos
-    echo "Killing all processes"
+    # Mata os processos clientes e o servidor
+    echo "Matando todos os  processos"
     killall cliente &>/dev/null
     killall servidor &>/dev/null
 
     sleep 10
+    # Muda de porta para evitar erro "Address already in use"
     port=$((port+1))
     echo
 done
