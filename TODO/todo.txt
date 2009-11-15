@@ -1,0 +1,1 @@
+@AT4 Fazer o cliente tratar adequadamente entrada via '<' (aka acaba no EOF)
