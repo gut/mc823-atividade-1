@@ -1,2 +1,1 @@
-@AT3 Realizar experimentos para descobrir quantos clientes (de 10) conseguem se conectar de imediato # Rafael
-_ @AT3 Relatar experimentos e resultados obtidos.
+@AT3 Relatar experimentos e resultados obtidos.
