@@ -3,3 +3,4 @@ _ @AT4 Usar funções pool e/ou select
 @AT4 O cliente deve mandar uma linha por vez para o servidor
 @AT4 Fazer o servidor apenas retornar o que o cliente enviou (aka servidor 2 mas com nossos updates de controle do 3?)
 @AT4 Cliente só encerra quando o servidor fechar conexão
+@AT4 Responder no relatório a Questão 2 do enunciado
