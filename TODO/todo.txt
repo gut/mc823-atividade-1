@@ -1,1 +1,6 @@
-@AT3 Gerar relatório com detalhes da implementações dos passos 1, 2 e 3 e respostas dos passos 4 e 8. # Gut
+@AT4 Fazer o cliente tratar adequadamente entrada via '<' (aka acaba no EOF)
+_ @AT4 Usar funções pool e/ou select
+@AT4 O cliente deve mandar uma linha por vez para o servidor
+@AT4 Fazer o servidor apenas retornar o que o cliente enviou (aka servidor 2 mas com nossos updates de controle do 3?)
+@AT4 Cliente só encerra quando o servidor fechar conexão
+@AT4 Responder no relatório a Questão 2 do enunciado
