@@ -1,1 +1,2 @@
 @AT4 Fazer o cliente tratar adequadamente entrada via '<' (aka acaba no EOF)
+_ @AT4 Usar funções pool e/ou select
