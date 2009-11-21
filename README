@@ -1,0 +1,16 @@
+Usando o script todo.py:
+
+1. Adicionando um novo TODO:
+    ./todo.py add "@AT<numero atividade> Mensagem do TODO"
+
+2. Adicionando uma tarefa-filha:
+    ./todo.py addchild <numero todo pai> "@AT<numero atividade> Mensagem TODO"
+
+3. Marcar como fazendo uma tarefa:
+    ./todo.py append <numero todo> "# <seu nome>"
+
+4. Listar todas as tarefas pendentes (inclusive filhas):
+    ./todo.py lsa
+
+5. Marcar tarefa como concluida:
+    ./todo.py do <numero todo concluido> "Comentario [opcional]"
