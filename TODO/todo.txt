@@ -1,2 +1,2 @@
-@AT4 Fazer o servidor apenas retornar o que o cliente enviou (aka servidor 2 mas com nossos updates de controle do 3?)
-@AT4 Responder no relatório a Questão 2 do enunciado
+@AT4 Fazer o servidor apenas retornar o que o cliente enviou (aka servidor 2 mas com nossos updates de controle do 3?) # Gut
+@AT4 Responder no relatório a Questão 2 do enunciado # Gut
