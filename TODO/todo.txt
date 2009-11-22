@@ -1,5 +1,4 @@
-@AT4 Fazer o cliente tratar adequadamente entrada via '<' (aka acaba no EOF) # Rafael
-_ @AT4 Usar funções pool e/ou select # Rafael
+@AT4 Usar funções pool e/ou select # Rafael
 @AT4 O cliente deve mandar uma linha por vez para o servidor # Rafael
 @AT4 Fazer o servidor apenas retornar o que o cliente enviou (aka servidor 2 mas com nossos updates de controle do 3?)
 @AT4 Cliente só encerra quando receber todo texto enviado de volta do servidor # Rafael
