@@ -7,40 +7,13 @@
 #include "util.h"
 
 int
-received_quit_cmd(const char *cmd)
-{
-    if (!strncmp(cmd, "quit", sizeof("quit") - 1) &&
-        cmd[sizeof("quit")] == '\0')
-        return 1;
-    else if (!strncmp(cmd, "exit", sizeof("exit") - 1) &&
-        cmd[sizeof("exit")] == '\0')
-        return 1;
-    else if (!strncmp(cmd, "bye", sizeof("bye") - 1) &&
-        cmd[sizeof("bye")] == '\0')
-        return 1;
-    else if (!strncmp(cmd, "sair", sizeof("sair") - 1) &&
-        cmd[sizeof("sair")] == '\0')
-        return 1;
-    else if (!strncmp(cmd, "adios", sizeof("adios") - 1) &&
-        cmd[sizeof("adios")] == '\0')
-        return 1;
-    else if (!strncmp(cmd, "salir", sizeof("salir") - 1) &&
-        cmd[sizeof("salir")] == '\0')
-        return 1;
-    else if (!strncmp(cmd, "tchau", sizeof("tchau") - 1) &&
-        cmd[sizeof("tchau")] == '\0')
-        return 1;
-    else
-        return 0;
-}
-
-int
 main(int argc, char **argv)
 {
-    int sockfd;
-    char sendline[MAXLINE];
-    char recvline[MAXLINE];
-    char error[MAXLINE];
+    int sockfd, maxfd;
+    fd_set sread;
+    char recvline[LINE_MAX];
+    char sendline[LINE_MAX];
+    char error[LINE_MAX];
     struct sockaddr_in servaddr;
     struct sockaddr_in local;
     socklen_t len;
@@ -69,38 +42,54 @@ main(int argc, char **argv)
     /* Obtem IP e porta do socket local */
     len = sizeof(local);
     Getsockname(sockfd, &local, &len);
-    fprintf(stdout, "Conexao local: %d.%d.%d.%d:%d\n"
-            "Conexao remota: %d.%d.%d.%d:%d\n",
-            GETIP(local.sin_addr.s_addr), ntohs(local.sin_port),
-            GETIP(servaddr.sin_addr.s_addr), ntohs(servaddr.sin_port));
 
-    /* Obtem comando do usuario */
+    /* Inicializa os fd_sets */
+    FD_ZERO(&sread);
+
+    /* Diz para stdin bufferizar de linha em linha */
+    setvbuf(stdin, NULL, _IOLBF, LINE_MAX);
+
+    int stdineof = 0;
     while (1) {
-        fputs("Digite comando: ", stdout);
-        fgets(sendline, sizeof(sendline) - 1, stdin);
+        /* Inserindo fd's nos fd_sets apropriados */
+        if (!stdineof)
+            FD_SET(fileno(stdin), &sread);
+        FD_SET(sockfd, &sread);
 
-        if (received_quit_cmd(sendline))
-            break;
+        maxfd = MAX(sockfd, fileno(stdin)) + 1;
+        Select(maxfd, &sread, NULL, NULL, NULL);
 
-        /* Envia o comando */
-        int len = writeall(sockfd, sendline, strlen(sendline) + 1);
-        if (len != strlen(sendline) + 1) {
-            perror("writeall");
-            continue;
+        /* Obtem resposta do servidor */
+        if (FD_ISSET(sockfd, &sread)) {
+            fprintf(stderr, "Server has response for me: \n");
+            if (!Readline(sockfd, recvline, LINE_MAX)) {
+                if (stdineof) {
+                    fprintf(stderr, "Zero read\n");
+                    break;
+                }
+                else {
+                    fprintf(stderr, "server terminated prematurely\n");
+                    exit(EXIT_FAILURE);
+                }
+            }
+            fprintf(stderr, recvline);
+            fputs(recvline, stdout);
         }
 
-        /* 0btem resposta do servidor */
-        int ret;
-        while (1) {
-            ret = readall(sockfd, recvline, MAXLINE - 1);
-            if (ret == CONNCLOSED || ret == READERROR)
-                break;
-            recvline[MAXLINE - 1] = '\0';
-            fprintf(stdout, "%s", recvline);
-            if (ret == ALLDATARECVD)
-                break;
+        /* Le dados da entrada padrao */
+        if (FD_ISSET(fileno(stdin), &sread)) {
+            fprintf(stderr, "Stdin data\n");
+            if (fgets(sendline, LINE_MAX, stdin) == NULL) {
+                fprintf(stderr, "EOF from stdin\n");
+                stdineof = 1;
+                shutdown(sockfd, SHUT_WR);
+                FD_CLR(fileno(stdin), &sread);
+                continue;
+            }
+            Writeall(sockfd, sendline, strlen(sendline));
         }
     }
+
     /* Fecha conexao */
     close(sockfd);
 
