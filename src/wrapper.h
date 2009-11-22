@@ -1,6 +1,8 @@
 #ifndef WRAPPER_H
 #define WRAPPER_H
 
+#include <sys/select.h>
+
 /* Obtem IP na forma decimal
  * Recebe um unsigned long s_addr;
  */
@@ -28,5 +30,7 @@ void Connect(int fd, const struct sockaddr_in *addr, socklen_t len);
 void Inet_pton(int af, const char *src, void *dst);
 
 void Getsockname(int fd, struct sockaddr_in *addr, socklen_t *len);
+
+int Select(int nfds, fd_set *, fd_set *, fd_set *, struct timeval *);
 
 #endif // WRAPPER_H
