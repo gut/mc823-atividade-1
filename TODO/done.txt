@@ -10,3 +10,4 @@ x 2009-11-15 @AT3 Gerar relatório com detalhes da implementações dos passos 1
 x 2009-11-15 @AT3 Realizar experimentos para descobrir quantos clientes (de 10) conseguem se conectar de imediato # Rafael
 x 2009-11-15 @AT3 Relatar experimentos e resultados obtidos.
 x 2009-11-22 @AT4 Fazer o cliente tratar adequadamente entrada via '<' (aka acaba no EOF) # Rafael
+x 2009-11-22 @AT4 Usar funções pool e/ou select # Rafael # Usado select
