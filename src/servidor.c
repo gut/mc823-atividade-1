@@ -39,7 +39,7 @@ main(int argc, char **argv)
     int listenfd, connfd, pid, listenq;
     struct sockaddr_in servaddr;
     struct sockaddr_in clientaddr;
-    char error[MAXLINE + 1];
+    char error[LINE_MAX + 1];
     char host[NI_MAXHOST], hp[NI_MAXSERV];
     socklen_t len;
     time_t thetime;
@@ -49,7 +49,7 @@ main(int argc, char **argv)
      * Recebemos o tamanho do backlog pela linha de comando tb.
      */
     if (argc != 3) {
-        snprintf(error, MAXLINE, "uso: %s <Port> <Backlog size>\n", argv[0]);
+        snprintf(error, LINE_MAX, "uso: %s <Port> <Backlog size>\n", argv[0]);
         fprintf(stderr, error);
         exit(EXIT_FAILURE);
     }
