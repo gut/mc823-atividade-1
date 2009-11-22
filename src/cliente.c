@@ -47,7 +47,7 @@ main(int argc, char **argv)
     FD_ZERO(&sread);
 
     /* Diz para stdin bufferizar de linha em linha */
-    setvbuf(stdin, NULL, _IOLBF, LINE_MAX);
+    setvbuf(stdin, NULL, _IOLBF, 0);//LINE_MAX);
 
     int stdineof = 0;
     while (1) {
@@ -61,26 +61,20 @@ main(int argc, char **argv)
 
         /* Obtem resposta do servidor */
         if (FD_ISSET(sockfd, &sread)) {
-            fprintf(stderr, "Server has response for me: \n");
             if (!Readline(sockfd, recvline, LINE_MAX)) {
-                if (stdineof) {
-                    fprintf(stderr, "Zero read\n");
+                if (stdineof)
                     break;
-                }
                 else {
                     fprintf(stderr, "server terminated prematurely\n");
                     exit(EXIT_FAILURE);
                 }
             }
-            fprintf(stderr, recvline);
             fputs(recvline, stdout);
         }
 
         /* Le dados da entrada padrao */
         if (FD_ISSET(fileno(stdin), &sread)) {
-            fprintf(stderr, "Stdin data\n");
             if (fgets(sendline, LINE_MAX, stdin) == NULL) {
-                fprintf(stderr, "EOF from stdin\n");
                 stdineof = 1;
                 shutdown(sockfd, SHUT_WR);
                 FD_CLR(fileno(stdin), &sread);
