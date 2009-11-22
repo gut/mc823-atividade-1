@@ -13,3 +13,4 @@ x 2009-11-22 @AT4 Fazer o cliente tratar adequadamente entrada via '<' (aka acab
 x 2009-11-22 @AT4 Usar funções pool e/ou select # Rafael # Usado select
 x 2009-11-22 @AT4 O cliente deve mandar uma linha por vez para o servidor # Rafael
 x 2009-11-22 @AT4 Cliente só encerra quando receber todo texto enviado de volta do servidor # Rafael
+x 2009-11-22 @AT4 Fazer cliente tratar adequadamente saida via '>' # Rafael
