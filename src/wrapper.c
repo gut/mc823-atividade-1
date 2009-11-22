@@ -86,3 +86,14 @@ Getnameinfo(const struct sockaddr_in *addr, socklen_t len,
     if (error != 0)
         fprintf(stderr, "erro em getnameinfo: %s\n", gai_strerror(error));
 }
+
+int
+Select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *errorfds, struct timeval *timeout)
+{
+    int readysocks = select(nfds, readfds, writefds, errorfds, timeout);
+    if (readysocks < 0) {
+        perror("select");
+        exit(EXIT_FAILURE);
+    }
+    return readysocks;
+}
