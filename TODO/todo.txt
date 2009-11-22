@@ -1,4 +1,3 @@
 @AT4 Fazer o servidor apenas retornar o que o cliente enviou (aka servidor 2 mas com nossos updates de controle do 3?)
-@AT4 Cliente só encerra quando receber todo texto enviado de volta do servidor # Rafael
 @AT4 Responder no relatório a Questão 2 do enunciado
 @AT4 Fazer cliente tratar adequadamente saida via '>' # Rafael
