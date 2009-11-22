@@ -1,18 +1,23 @@
 #ifndef UTIL_H
 #define UTIL_H
 
-#define MAXLINE         4096
+#include <limits.h>
+
 #define MAXDATASIZE     1024
+#define MIN(A, B) ((A <= B) ? A : B)
+#define MAX(A, B) ((A >= B) ? A : B)
 
-enum {
-    CONNCLOSED = -2,
-    READERROR = -1,
-    ALLDATARECVD,
-    RECEIVING
-};
 
-int readall(int fd, char *read, size_t maxlen);
+ssize_t readall(int sd, void *read, size_t maxcount);
 
-int writeall(int fd, const char *buf, size_t count);
+ssize_t Readall(int sd, void *read, size_t maxcount);
+
+ssize_t writeall(int sd, const void *buf, size_t count);
+
+void Writeall(int sd, const void *buf, size_t count);
+
+ssize_t readline(int sd, void *buf, size_t maxlen);
+
+ssize_t Readline(int sd, void *buf, size_t maxlen);
 
 #endif
