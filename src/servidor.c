@@ -119,41 +119,26 @@ main(int argc, char **argv)
 static void
 process_request(int connfd, const char *host, const char *port)
 {
-    char buf[MAXDATASIZE], out[MAXDATASIZE];
-    FILE *pipe = NULL;
+    char buf[MAXDATASIZE];
     int len;
 
     while (1) {
         /* Le comando do cliente */
-        if (readall(connfd, buf, MAXDATASIZE) < 0)
+        if (Readline(connfd, buf, MAXDATASIZE) < 0)
             break;
 
         /* Imprime cliente e seu comando a ser executado */
-        fprintf(stdout, "%s:%s - %s\n", host, port, buf);
-
-        /* Executa o comando recebido */
-        pipe = popen(buf, "r");
-        if (pipe == NULL) {
-            perror("popen");
-            continue;
-        }
+        fprintf(stdout, "%s:%s - %s", host, port, buf);
+		/* Mantendo algum \n no final da string */
+		if (buf[strlen(buf)-1] != '\n')
+			fputc('\n', stdout);
 
         /* Devolve saida do comando para o cliente */
-        while (!feof(pipe)) {
-            if (fgets(out, sizeof(out), pipe) != NULL) {
-                len = writeall(connfd, out, strlen(out));
-                if (len != strlen(out)) {
-                    perror("writeall");
-                    break;
-                }
-            }
+        len = writeall(connfd, buf, strlen(buf));
+        if (len != strlen(buf)) {
+            perror("writeall");
+            break;
         }
-        /* Diz para cliente que nao ha mais dados */
-        len = write(connfd, "\0", 1);
-        if (len != 1)
-            perror("write");
-
-            perror("pclose");
     }
     /* Filho encerra sua conexao */
     close(connfd);
