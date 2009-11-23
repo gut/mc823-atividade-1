@@ -18,16 +18,9 @@
 #define NI_MAXSERV 32
 #endif
 
-#define SLEEP_TIME 60
-
-#define LOG(fmt, rest...)                       \
-    do {                                        \
-        FILE *log = fopen("server.log", "a");   \
-        if (log) {                              \
-            fprintf(log, fmt, ## rest);         \
-            fclose(log);                        \
-        }                                       \
-    } while (0)
+#ifndef LISTENQ
+#define LISTENQ 10
+#endif
 
 static void process_request(int, const char*, const char*);
 
@@ -36,36 +29,16 @@ static void sigchld_handler(int);
 int
 main(int argc, char **argv)
 {
-    int listenfd, connfd, pid, listenq;
+    int listenfd, connfd, pid;
     struct sockaddr_in servaddr;
     struct sockaddr_in clientaddr;
     char error[LINE_MAX + 1];
     char host[NI_MAXHOST], hp[NI_MAXSERV];
     socklen_t len;
-    time_t thetime;
 
-    /*
-     * ## Modificado da atividade anterior ##
-     * Recebemos o tamanho do backlog pela linha de comando tb.
-     */
-    if (argc != 3) {
-        snprintf(error, LINE_MAX, "uso: %s <Port> <Backlog size>\n", argv[0]);
+    if (argc != 2) {
+        snprintf(error, LINE_MAX, "uso: %s <Port>\n", argv[0]);
         fprintf(stderr, error);
-        exit(EXIT_FAILURE);
-    }
-
-    /*
-     * ## Modificado da atividade anterior ##
-     * Define o tamanho do backlog a ser usado no Listen
-     */
-    char *ptr = NULL;
-    errno = 0;
-    listenq = (int)strtol(argv[2], &ptr, 10);
-    if (errno != 0) {
-        perror("strtol");
-        exit(EXIT_FAILURE);
-    } else if (*ptr != '\0') {
-        fprintf(stderr, "ERRO: backlog '%s' invalido.\n", argv[2]);
         exit(EXIT_FAILURE);
     }
 
@@ -88,7 +61,7 @@ main(int argc, char **argv)
     Bind(listenfd, &servaddr, sizeof(servaddr));
 
     /* Deixa esse socket preparado para aceitar pedidos de conexao */
-    Listen(listenfd, listenq);
+    Listen(listenfd, LISTENQ);
 
     /*
      * ## Modificado da atividade anterior ##
@@ -96,20 +69,6 @@ main(int argc, char **argv)
      * que nao se tornem processos-zumbi
      */
     signal(SIGCHLD, sigchld_handler);
-
-    /* Testando se eh possivel abrir arquivo de log */
-    FILE *log = fopen("server.log", "a");
-    if (!log)
-        fprintf(stderr, "AVISO: Nao foi possivel abrir arquivo de log."
-                " Nenhuma informacao serah logada.\n");
-    fclose(log);
-
-    /*
-     * ## Modificado da atividade anterior ##
-     * Aguarda um determinado tempo para que se forme uma fila de conexoes
-     * pendentes. O backlog definirah quais delas serao completadas
-     */
-    sleep(SLEEP_TIME);
 
     /*
      * main loop: espere por um pedido de conexao, devolva saida do
@@ -133,9 +92,6 @@ main(int argc, char **argv)
 
         /* Determina quem enviou a mensagem */
         Getnameinfo(&clientaddr, len, host, sizeof(host), hp, sizeof(hp));
-        time(&thetime);
-        struct tm *t = localtime(&thetime);
-        LOG("%s:%s conectado em %s", host, hp, asctime(t));
 
         pid = fork();
         if (pid == 0) {
@@ -147,9 +103,6 @@ main(int argc, char **argv)
             process_request(connfd, h, p);
 
             fprintf(stdout, "%s:%s desconectado\n", h, p);
-            time(&thetime);
-            t = localtime(&thetime);
-            LOG("%s:%s desconectado em %s", h, p, asctime(t));
 
             free(h);
             free(p);
