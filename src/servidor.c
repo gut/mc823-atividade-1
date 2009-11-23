@@ -124,7 +124,7 @@ process_request(int connfd, const char *host, const char *port)
 
     while (1) {
         /* Le comando do cliente */
-        if (Readline(connfd, buf, MAXDATASIZE) < 0)
+        if (!Readline(connfd, buf, MAXDATASIZE))
             break;
 
         /* Imprime cliente e seu comando a ser executado */
