@@ -1,3 +1,4 @@
 @AT5 Implementar cliente tcp e udp
 _ @AT5 Escolha do protocolo será feita pela linha de comando
 @AT5 Servidor tcp/udp concorrente
+_ @AT5 Servidor escutará por conexões em ambos os protocolos
