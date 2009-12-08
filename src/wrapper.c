@@ -10,7 +10,7 @@ Socket(int domain, int type, int protocol)
 {
     int listenfd;
 
-    listenfd = socket(AF_INET, SOCK_STREAM, 0);
+    listenfd = socket(domain, type, protocol);
     if (listenfd == -1) {
         perror("socket");
         exit(EXIT_FAILURE);
