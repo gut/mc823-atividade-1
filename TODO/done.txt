@@ -17,3 +17,4 @@ x 2009-11-22 @AT4 Fazer cliente tratar adequadamente saida via '>' # Rafael
 x 2009-11-23 @AT4 Fazer o servidor apenas retornar o que o cliente enviou (aka servidor 2 mas com nossos updates de controle do 3?) # Gut
 x 2009-11-23 @AT4 Responder no relatório a Questão 2 do enunciado # Gut
 x 2009-12-08 @AT5 Implementar cliente tcp e udp # Rafael # Cliente funcionando
+x 2009-12-08 @AT5 Escolha do protocolo será feita pela linha de comando # Rafael
