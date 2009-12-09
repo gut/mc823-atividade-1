@@ -29,15 +29,15 @@ static void sigchld_handler(int);
 int
 main(int argc, char **argv)
 {
-    int listenfd, connfd, pid;
-    struct sockaddr_in servaddr;
+    int listenfd, localfd, connfd, pid;
+    struct sockaddr_in servaddr, local;
     struct sockaddr_in clientaddr;
     char error[LINE_MAX + 1];
     char host[NI_MAXHOST], hp[NI_MAXSERV];
     socklen_t len;
 
-    if (argc != 2) {
-        snprintf(error, LINE_MAX, "uso: %s <Port>\n", argv[0]);
+    if (argc != 3) {
+        snprintf(error, LINE_MAX, "uso: %s <TCP Port> <UDP Port>\n", argv[0]);
         fprintf(stderr, error);
         exit(EXIT_FAILURE);
     }
@@ -62,6 +62,14 @@ main(int argc, char **argv)
 
     /* Deixa esse socket preparado para aceitar pedidos de conexao */
     Listen(listenfd, LISTENQ);
+
+    /* Analogo para o UDP */
+    localfd = Socket(AF_INET, SOCK_DGRAM, 0);
+    bzero(&local, sizeof(local));
+    local.sin_family      = AF_INET;
+    local.sin_port        = htons(atoi(argv[2]));
+    local.sin_addr.s_addr = htonl(INADDR_ANY);
+    Bind(localfd, &local, sizeof(local));
 
     /*
      * ## Modificado da atividade anterior ##
@@ -129,9 +137,9 @@ process_request(int connfd, const char *host, const char *port)
 
         /* Imprime cliente e seu comando a ser executado */
         fprintf(stdout, "%s:%s - %s", host, port, buf);
-		/* Mantendo algum \n no final da string */
-		if (buf[strlen(buf)-1] != '\n')
-			fputc('\n', stdout);
+        /* Mantendo algum \n no final da string */
+        if (buf[strlen(buf)-1] != '\n')
+            fputc('\n', stdout);
 
         /* Devolve saida do comando para o cliente */
         len = writeall(connfd, buf, strlen(buf));
