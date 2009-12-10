@@ -72,7 +72,6 @@ main(int argc, char **argv)
     Bind(localfd, &local, sizeof(local));
 
     /*
-     * ## Modificado da atividade anterior ##
      * Funcao para lidar corretamente com processos-filho para
      * que nao se tornem processos-zumbi
      */
@@ -89,7 +88,6 @@ main(int argc, char **argv)
         if (connfd < 0) {
 
             /*
-             * ## Modificado da atividade anterior ##
              * Algum sinal chegou no meio do accept. Ignore
              */
             if (errno == EINTR)
@@ -153,7 +151,6 @@ process_request(int connfd, const char *host, const char *port)
 }
 
 /*
- * ## Modificado da atividade anterior ##
  * Handler responsavel por finalizar corretamente
  * os servidores-filhos
  */
