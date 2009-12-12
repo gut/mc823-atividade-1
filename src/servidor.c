@@ -22,6 +22,10 @@
 #define LISTENQ 10
 #endif
 
+int process_tcp(struct sockaddr_in *);
+
+int process_udp(struct sockaddr_in *);
+
 static void process_request(int, const char*, const char*);
 
 static void sigchld_handler(int);
@@ -29,23 +33,15 @@ static void sigchld_handler(int);
 int
 main(int argc, char **argv)
 {
-    int listenfd, localfd, connfd, pid;
+    int pid;
     struct sockaddr_in servaddr;
-    struct sockaddr_in clientaddr;
     char error[LINE_MAX + 1];
-    char host[NI_MAXHOST], hp[NI_MAXSERV];
-    socklen_t len;
 
     if (argc != 3) {
         snprintf(error, LINE_MAX, "uso: %s <Porta TCP> <Porta UDP>\n", argv[0]);
         fprintf(stderr, error);
         exit(EXIT_FAILURE);
     }
-
-    /* Cria socket pai.
-     * "listenfd" serah o file descriptor usado
-     * para operar com o socket */
-    listenfd = Socket(AF_INET, SOCK_STREAM, 0);
 
     /* Contrucao do endereco Internet do servidor */
     /* servaddr struct zerada */
@@ -54,22 +50,36 @@ main(int argc, char **argv)
     servaddr.sin_family      = AF_INET;
     /* Deixe o sistema descobrir nosso IP */
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-    /* Esta serah a porta na qual escutaremos */
-    servaddr.sin_port        = htons(atoi(argv[1]));
+
+    pid = fork();
+    if (pid == 0) {  /* tcp */
+        /* Esta serah a porta na qual escutaremos tcp */
+        servaddr.sin_port = htons(atoi(argv[1]));
+        return process_tcp(&servaddr);
+    }
+    else { /* udp */
+        /* Porta para o udp*/
+        servaddr.sin_port = htons(atoi(argv[2]));
+        return process_udp(&servaddr);
+    }
+}
+
+int process_tcp(struct sockaddr_in *servaddr) {
+    int listenfd, connfd, pid;
+    struct sockaddr_in clientaddr;
+    char host[NI_MAXHOST], hp[NI_MAXSERV];
+    socklen_t len;
+
+    /* Cria socket pai.
+     * "listenfd" serah o file descriptor usado
+     * para operar com o socket */
+    listenfd = Socket(AF_INET, SOCK_STREAM, 0);
 
     /* Associa o socket pai com uma porta */
-    Bind(listenfd, &servaddr, sizeof(servaddr));
+    Bind(listenfd, servaddr, sizeof(*servaddr));
 
     /* Deixa esse socket preparado para aceitar pedidos de conexao */
     Listen(listenfd, LISTENQ);
-
-    /* Analogo para o UDP */
-    localfd = Socket(AF_INET, SOCK_DGRAM, 0);
-    bzero(&servaddr, sizeof(servaddr));
-    servaddr.sin_family      = AF_INET;
-    servaddr.sin_port        = htons(atoi(argv[2]));
-    servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-    Bind(localfd, &servaddr, sizeof(servaddr));
 
     /*
      * Funcao para lidar corretamente com processos-filho para
@@ -121,6 +131,44 @@ main(int argc, char **argv)
 
     return 0;
 }
+
+int process_udp(struct sockaddr_in *servaddr) {
+    int localfd, ret;
+    struct sockaddr_in clientaddr;
+    char host[NI_MAXHOST], hp[NI_MAXSERV];
+    char buf[LINE_MAX];
+    socklen_t len = sizeof(clientaddr);
+
+    /* Cria socket pai.
+     * "localfd" serah o file descriptor usado
+     * para operar com o socket */
+    localfd = Socket(AF_INET, SOCK_DGRAM, 0);
+
+    /* Associa o socket pai com uma porta */
+    Bind(localfd, servaddr, sizeof(*servaddr));
+
+    for ( ; ; ) {
+        /* Espera por um pedido de conexao */
+        ret = Recvfrom(localfd, buf, LINE_MAX, 0,
+                (struct sockaddr *)&clientaddr, &len);
+
+        /* Determina quem enviou a mensagem */
+        Getnameinfo(&clientaddr, len, host, sizeof(host), hp, sizeof(hp));
+
+        /* Imprime cliente e seu comando a ser executado */
+        fprintf(stdout, "UDP de %s:%s - %s", host, hp, buf);
+        /* Mantendo algum \n no final da string */
+        if (buf[strlen(buf)-1] != '\n')
+            fputc('\n', stdout);
+
+        /* Devolve a requisição imediatamente */
+        ret = Sendto(localfd, buf, strlen(buf), 0,
+                (struct sockaddr *)&clientaddr, len);
+    }
+
+    return 0;
+}
+
 
 static void
 process_request(int connfd, const char *host, const char *port)
