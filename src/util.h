@@ -21,12 +21,4 @@ ssize_t readline(int sd, void *buf, size_t maxlen);
 
 ssize_t Readline(int sd, void *buf, size_t maxlen);
 
-ssize_t Sendto(int sd, const void *msg, size_t len, int flags,
-               const struct sockaddr *dest, socklen_t dest_len);
-
-
-ssize_t Recvfrom(int sd, void *buf, size_t len, int flags, struct sockaddr *addr,
-                 socklen_t *addr_len);
-
-
 #endif

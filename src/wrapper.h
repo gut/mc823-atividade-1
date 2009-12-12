@@ -33,4 +33,12 @@ void Getsockname(int fd, struct sockaddr_in *addr, socklen_t *len);
 
 int Select(int nfds, fd_set *, fd_set *, fd_set *, struct timeval *);
 
+/* Funcoes "envelopadoras" comuns para datagramas */
+
+ssize_t Sendto(int sd, const void *msg, size_t len, int flags,
+               const struct sockaddr *dest, socklen_t dest_len);
+
+ssize_t Recvfrom(int sd, void *buf, size_t len, int flags, struct sockaddr *addr,
+                 socklen_t *addr_len);
+
 #endif // WRAPPER_H
