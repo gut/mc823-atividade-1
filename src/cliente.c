@@ -45,17 +45,10 @@ main(int argc, char **argv)
         local.sin_family = AF_INET;
         local.sin_port = htons(0);
         local.sin_addr.s_addr = htonl(INADDR_ANY);
-        if (bind(sockfd, (struct sockaddr *)&local, sizeof(local)) < 0) {
-            perror("bind");
-            exit(EXIT_FAILURE);
-        }
+        Bind(sockfd, (struct sockaddr *)&local, sizeof(local));
     } else {
         /* Cria a conexao tcp com o servidor */
         Connect(sockfd, &servaddr, sizeof(servaddr));
-
-        /* Obtem IP e porta do socket local
-        len = sizeof(local);
-        Getsockname(sockfd, &local, &len); */
     }
 
     /* Inicializa os fd_sets */
