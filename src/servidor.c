@@ -37,7 +37,7 @@ main(int argc, char **argv)
     socklen_t len;
 
     if (argc != 3) {
-        snprintf(error, LINE_MAX, "uso: %s <TCP Port> <UDP Port>\n", argv[0]);
+        snprintf(error, LINE_MAX, "uso: %s <Porta TCP> <Porta UDP>\n", argv[0]);
         fprintf(stderr, error);
         exit(EXIT_FAILURE);
     }
