@@ -1,3 +1,2 @@
 @AT5 Servidor tcp/udp concorrente # Gut
-_ @AT5 Servidor escutará por conexões em ambos os protocolos # Gut
 @AT5 Relatório detalhando implementação e testes realizados
