@@ -30,7 +30,7 @@ int
 main(int argc, char **argv)
 {
     int listenfd, localfd, connfd, pid;
-    struct sockaddr_in servaddr, local;
+    struct sockaddr_in servaddr;
     struct sockaddr_in clientaddr;
     char error[LINE_MAX + 1];
     char host[NI_MAXHOST], hp[NI_MAXSERV];
@@ -65,11 +65,11 @@ main(int argc, char **argv)
 
     /* Analogo para o UDP */
     localfd = Socket(AF_INET, SOCK_DGRAM, 0);
-    bzero(&local, sizeof(local));
-    local.sin_family      = AF_INET;
-    local.sin_port        = htons(atoi(argv[2]));
-    local.sin_addr.s_addr = htonl(INADDR_ANY);
-    Bind(localfd, &local, sizeof(local));
+    bzero(&servaddr, sizeof(servaddr));
+    servaddr.sin_family      = AF_INET;
+    servaddr.sin_port        = htons(atoi(argv[2]));
+    servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+    Bind(localfd, &servaddr, sizeof(servaddr));
 
     /*
      * Funcao para lidar corretamente com processos-filho para
