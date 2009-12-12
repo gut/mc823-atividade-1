@@ -45,7 +45,7 @@ main(int argc, char **argv)
         local.sin_family = AF_INET;
         local.sin_port = htons(0);
         local.sin_addr.s_addr = htonl(INADDR_ANY);
-        Bind(sockfd, (struct sockaddr *)&local, sizeof(local));
+        Bind(sockfd, &local, sizeof(local));
     } else {
         /* Cria a conexao tcp com o servidor */
         Connect(sockfd, &servaddr, sizeof(servaddr));
