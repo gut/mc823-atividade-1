@@ -104,7 +104,7 @@ read:
                 continue;
             }
             use_udp ?
-                Sendto(sockfd, sendline, strlen(sendline) + 1, 0,
+                Sendto(sockfd, sendline, strlen(sendline), 0,
                        (struct sockaddr *)&servaddr, sizeof(servaddr)) :
                 Writeall(sockfd, sendline, strlen(sendline));
         }
