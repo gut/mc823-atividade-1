@@ -2,6 +2,7 @@
 #define UTIL_H
 
 #include <limits.h>
+#include <sys/socket.h>
 
 #define MAXDATASIZE     1024
 #define MIN(A, B) ((A <= B) ? A : B)

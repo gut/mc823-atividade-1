@@ -22,6 +22,10 @@
 #define LISTENQ 10
 #endif
 
+int process_tcp(struct sockaddr_in *);
+
+int process_udp(struct sockaddr_in *);
+
 static void process_request(int, const char*, const char*);
 
 static void sigchld_handler(int);
@@ -29,23 +33,15 @@ static void sigchld_handler(int);
 int
 main(int argc, char **argv)
 {
-    int listenfd, connfd, pid;
+    int pid;
     struct sockaddr_in servaddr;
-    struct sockaddr_in clientaddr;
     char error[LINE_MAX + 1];
-    char host[NI_MAXHOST], hp[NI_MAXSERV];
-    socklen_t len;
 
-    if (argc != 2) {
-        snprintf(error, LINE_MAX, "uso: %s <Port>\n", argv[0]);
+    if (argc != 3) {
+        snprintf(error, LINE_MAX, "uso: %s <Porta TCP> <Porta UDP>\n", argv[0]);
         fprintf(stderr, error);
         exit(EXIT_FAILURE);
     }
-
-    /* Cria socket pai.
-     * "listenfd" serah o file descriptor usado
-     * para operar com o socket */
-    listenfd = Socket(AF_INET, SOCK_STREAM, 0);
 
     /* Contrucao do endereco Internet do servidor */
     /* servaddr struct zerada */
@@ -54,17 +50,44 @@ main(int argc, char **argv)
     servaddr.sin_family      = AF_INET;
     /* Deixe o sistema descobrir nosso IP */
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-    /* Esta serah a porta na qual escutaremos */
-    servaddr.sin_port        = htons(atoi(argv[1]));
+
+    /*
+     * Funcao para lidar corretamente com processos-filho para
+     * que nao se tornem processos-zumbi
+     */
+    signal(SIGCHLD, sigchld_handler);
+
+    pid = fork();
+    if (pid == 0) {  /* tcp */
+        /* Esta serah a porta na qual escutaremos tcp */
+        servaddr.sin_port = htons(atoi(argv[1]));
+        return process_tcp(&servaddr);
+    }
+    else { /* udp */
+        /* Porta para o udp*/
+        servaddr.sin_port = htons(atoi(argv[2]));
+        return process_udp(&servaddr);
+    }
+}
+
+int process_tcp(struct sockaddr_in *servaddr) {
+    int listenfd, connfd, pid;
+    struct sockaddr_in clientaddr;
+    char host[NI_MAXHOST], hp[NI_MAXSERV];
+    socklen_t len;
+
+    /* Cria socket pai.
+     * "listenfd" serah o file descriptor usado
+     * para operar com o socket */
+    listenfd = Socket(AF_INET, SOCK_STREAM, 0);
 
     /* Associa o socket pai com uma porta */
-    Bind(listenfd, &servaddr, sizeof(servaddr));
+    Bind(listenfd, servaddr, sizeof(*servaddr));
 
     /* Deixa esse socket preparado para aceitar pedidos de conexao */
     Listen(listenfd, LISTENQ);
 
     /*
-     * ## Modificado da atividade anterior ##
      * Funcao para lidar corretamente com processos-filho para
      * que nao se tornem processos-zumbi
      */
@@ -81,7 +104,6 @@ main(int argc, char **argv)
         if (connfd < 0) {
 
             /*
-             * ## Modificado da atividade anterior ##
              * Algum sinal chegou no meio do accept. Ignore
              */
             if (errno == EINTR)
@@ -116,6 +138,44 @@ main(int argc, char **argv)
     return 0;
 }
 
+int process_udp(struct sockaddr_in *servaddr) {
+    int localfd, ret;
+    struct sockaddr_in clientaddr;
+    char host[NI_MAXHOST], hp[NI_MAXSERV];
+    char buf[LINE_MAX];
+    socklen_t len = sizeof(clientaddr);
+
+    /* Cria socket pai.
+     * "localfd" serah o file descriptor usado
+     * para operar com o socket */
+    localfd = Socket(AF_INET, SOCK_DGRAM, 0);
+
+    /* Associa o socket pai com uma porta */
+    Bind(localfd, servaddr, sizeof(*servaddr));
+
+    for ( ; ; ) {
+        /* Espera por um pedido de conexao */
+        ret = Recvfrom(localfd, buf, LINE_MAX, 0,
+                (struct sockaddr *)&clientaddr, &len);
+
+        /* Determina quem enviou a mensagem */
+        Getnameinfo(&clientaddr, len, host, sizeof(host), hp, sizeof(hp));
+
+        /* Imprime cliente e sua mensagem */
+        fprintf(stdout, "UDP de %s:%s - %s", host, hp, buf);
+        /* Mantendo algum \n no final da string */
+        if (buf[strlen(buf)-1] != '\n')
+            fputc('\n', stdout);
+
+        /* Devolve a mensagem imediatamente */
+        ret = Sendto(localfd, buf, strlen(buf), 0,
+                (struct sockaddr *)&clientaddr, len);
+    }
+
+    return 0;
+}
+
+
 static void
 process_request(int connfd, const char *host, const char *port)
 {
@@ -129,9 +189,9 @@ process_request(int connfd, const char *host, const char *port)
 
         /* Imprime cliente e seu comando a ser executado */
         fprintf(stdout, "%s:%s - %s", host, port, buf);
-		/* Mantendo algum \n no final da string */
-		if (buf[strlen(buf)-1] != '\n')
-			fputc('\n', stdout);
+        /* Mantendo algum \n no final da string */
+        if (buf[strlen(buf)-1] != '\n')
+            fputc('\n', stdout);
 
         /* Devolve saida do comando para o cliente */
         len = writeall(connfd, buf, strlen(buf));
@@ -145,7 +205,6 @@ process_request(int connfd, const char *host, const char *port)
 }
 
 /*
- * ## Modificado da atividade anterior ##
  * Handler responsavel por finalizar corretamente
  * os servidores-filhos
  */

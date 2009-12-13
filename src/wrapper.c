@@ -10,7 +10,7 @@ Socket(int domain, int type, int protocol)
 {
     int listenfd;
 
-    listenfd = socket(AF_INET, SOCK_STREAM, 0);
+    listenfd = socket(domain, type, protocol);
     if (listenfd == -1) {
         perror("socket");
         exit(EXIT_FAILURE);
@@ -96,4 +96,35 @@ Select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *errorfds, struct tim
         exit(EXIT_FAILURE);
     }
     return readysocks;
+}
+
+ssize_t
+Sendto(int sd, const void *msg, size_t len, int flags,
+       const struct sockaddr *dest, socklen_t dest_len)
+{
+    ssize_t total, sent;
+
+    total = 0;
+    while (total < len) {
+        sent = sendto(sd, msg + total, len - total, flags, dest, dest_len);
+        if (sent < 0) {
+            perror("sendto");
+            exit(EXIT_FAILURE);
+        }
+        total += sent;
+    }
+
+    return total;
+}
+
+ssize_t
+Recvfrom(int sd, void *buf, size_t len, int flags, struct sockaddr *addr,
+         socklen_t *addr_len)
+{
+    ssize_t recved = recvfrom(sd, buf, len, flags, addr, addr_len);
+    if (recved < 0) {
+        perror("recvfrom");
+        exit(EXIT_FAILURE);
+    }
+    return recved;
 }
