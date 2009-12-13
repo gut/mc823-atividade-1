@@ -51,6 +51,12 @@ main(int argc, char **argv)
     /* Deixe o sistema descobrir nosso IP */
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
 
+    /*
+     * Funcao para lidar corretamente com processos-filho para
+     * que nao se tornem processos-zumbi
+     */
+    signal(SIGCHLD, sigchld_handler);
+
     pid = fork();
     if (pid == 0) {  /* tcp */
         /* Esta serah a porta na qual escutaremos tcp */
