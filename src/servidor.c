@@ -155,13 +155,13 @@ int process_udp(struct sockaddr_in *servaddr) {
         /* Determina quem enviou a mensagem */
         Getnameinfo(&clientaddr, len, host, sizeof(host), hp, sizeof(hp));
 
-        /* Imprime cliente e seu comando a ser executado */
+        /* Imprime cliente e sua mensagem */
         fprintf(stdout, "UDP de %s:%s - %s", host, hp, buf);
         /* Mantendo algum \n no final da string */
         if (buf[strlen(buf)-1] != '\n')
             fputc('\n', stdout);
 
-        /* Devolve a requisição imediatamente */
+        /* Devolve a mensagem imediatamente */
         ret = Sendto(localfd, buf, strlen(buf), 0,
                 (struct sockaddr *)&clientaddr, len);
     }
