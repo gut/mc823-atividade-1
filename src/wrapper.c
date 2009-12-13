@@ -102,13 +102,19 @@ ssize_t
 Sendto(int sd, const void *msg, size_t len, int flags,
        const struct sockaddr *dest, socklen_t dest_len)
 {
-    ssize_t sent = sendto(sd, msg, len, flags, dest, dest_len);
-    if (sent < 0) {
-        perror("sendto");
-        exit(EXIT_FAILURE);
+    ssize_t total, sent;
+
+    total = 0;
+    while (total < len) {
+        sent = sendto(sd, msg + total, len - total, flags, dest, dest_len);
+        if (sent < 0) {
+            perror("sendto");
+            exit(EXIT_FAILURE);
+        }
+        total += sent;
     }
 
-    return sent;
+    return total;
 }
 
 ssize_t
