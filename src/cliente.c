@@ -9,13 +9,13 @@
 int
 main(int argc, char **argv)
 {
-    int sockfd, maxfd, use_udp = 0;
+    int sockfd, maxfd, activity, use_udp = 0;
     fd_set sread;
     char recvline[LINE_MAX];
     char sendline[LINE_MAX];
     char error[LINE_MAX];
     struct sockaddr_in servaddr;
-    struct sockaddr_in local;
+    struct sockaddr local;
     struct timeval timeout;
     socklen_t slen;
 
@@ -40,16 +40,9 @@ main(int argc, char **argv)
     /* Converte string em uma struct de endereco de internet */
     Inet_pton(AF_INET, argv[1], &servaddr.sin_addr);
 
-    if (use_udp) {
-        bzero(&local, sizeof(local));
-        local.sin_family = AF_INET;
-        local.sin_port = htons(0);
-        local.sin_addr.s_addr = htonl(INADDR_ANY);
-        Bind(sockfd, &local, sizeof(local));
-    } else {
-        /* Cria a conexao tcp com o servidor */
+    /* Cria a conexao tcp com o servidor */
+    if (!use_udp)
         Connect(sockfd, &servaddr, sizeof(servaddr));
-    }
 
     /* Inicializa os fd_sets */
     FD_ZERO(&sread);
@@ -58,18 +51,17 @@ main(int argc, char **argv)
     setvbuf(stdin, NULL, _IOLBF, 0);//LINE_MAX);
 
     int stdineof = 0;
-    int activity = 0;
-    timeout.tv_sec = 30; // 10s
+    timeout.tv_sec = 60; // 1 min
     timeout.tv_usec = 0;
     slen = sizeof(local);
 
     while (1) {
         /* Inserindo fd's nos fd_sets apropriados */
-        activity = 0;
         if (!stdineof)
             FD_SET(fileno(stdin), &sread);
         FD_SET(sockfd, &sread);
 
+        activity = 0;
         maxfd = MAX(sockfd, fileno(stdin)) + 1;
         Select(maxfd, &sread, NULL, NULL, &timeout);
 
@@ -78,11 +70,11 @@ main(int argc, char **argv)
             activity = 1;
             int ret;
             if (use_udp) {
-                ret = Recvfrom(sockfd, recvline, LINE_MAX, 0,
-                               (struct sockaddr *)&local, &slen);
-                if (local.sin_addr.s_addr != servaddr.sin_addr.s_addr ||
-                    local.sin_port != servaddr.sin_port) {
-                    printf("Not for me this message\n");
+                ret = Recvfrom(sockfd, recvline, LINE_MAX - 1, 0,
+                               &local, &slen);
+                if (slen != sizeof(servaddr) ||
+                    memcmp(&servaddr, &local, slen) != 0) {
+                    printf("Resposta ignorada\n");
                     goto read;
                 }
             }
@@ -92,10 +84,11 @@ main(int argc, char **argv)
                 if (stdineof)
                     break;
                 else {
-                    fprintf(stderr, "server terminated prematurely\n");
+                    fprintf(stderr, "servidor terminou prematuramente\n");
                     exit(EXIT_FAILURE);
                 }
             }
+            recvline[ret] = '\0';
             fputs(recvline, stdout);
         }
 
@@ -111,17 +104,14 @@ read:
                 continue;
             }
             use_udp ?
-                Sendto(sockfd, sendline, strlen(sendline), 0,
+                Sendto(sockfd, sendline, strlen(sendline) + 1, 0,
                        (struct sockaddr *)&servaddr, sizeof(servaddr)) :
                 Writeall(sockfd, sendline, strlen(sendline));
         }
 
-        /* Timeout ? */
-        if (!activity) {
-            printf("Ooops, select timed out\n");
+        /* Tempo espera expirou */
+        if (!activity && use_udp)
             break;
-        }
-
     }
 
     /* Fecha conexao */
