@@ -20,3 +20,4 @@ x 2009-12-08 @AT5 Implementar cliente tcp e udp # Rafael # Cliente funcionando
 x 2009-12-08 @AT5 Escolha do protocolo será feita pela linha de comando # Rafael
 x 2009-12-12 @AT5 Servidor escutará por conexões em ambos os protocolos # Gut
 x 2009-12-12 @AT5 Servidor tcp/udp concorrente # Gut
+x 2009-12-13 @AT5 Relatório detalhando implementação e testes realizados # # Rafael
